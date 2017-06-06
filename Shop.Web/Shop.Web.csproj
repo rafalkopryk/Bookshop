@@ -189,6 +189,13 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\app\favicon.ico" />
+    <Content Include="Scripts\app\index.html" />
+    <Content Include="Scripts\app\inline.bundle.js" />
+    <Content Include="Scripts\app\main.bundle.js" />
+    <Content Include="Scripts\app\polyfills.bundle.js" />
+    <Content Include="Scripts\app\styles.bundle.js" />
+    <Content Include="Scripts\app\vendor.bundle.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -213,6 +220,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\app\inline.bundle.js.map" />
+    <Content Include="Scripts\app\main.bundle.js.map" />
+    <Content Include="Scripts\app\polyfills.bundle.js.map" />
+    <Content Include="Scripts\app\styles.bundle.js.map" />
+    <Content Include="Scripts\app\vendor.bundle.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
