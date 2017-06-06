@@ -1,8 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '@angular/material';
+
+import { BooksModule } from './books/books.module'
+import 'hammerjs';
+import { FlexLayoutModule } from "@angular/flex-layout";
+
+
 
 @NgModule({
   declarations: [
@@ -10,7 +18,11 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      MaterialModule,
+      BooksModule,
+      FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

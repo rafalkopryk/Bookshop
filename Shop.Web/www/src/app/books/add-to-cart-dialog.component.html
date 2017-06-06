@@ -1,0 +1,35 @@
+﻿<h2 md-dialog-title>Dodaj do koszyka</h2>
+<md-dialog-content>
+
+
+
+
+
+  <form>
+   
+    <md-input-container class="full-width">
+      <input mdInput placeholder="Tytuł" disabled [(ngModel)]="title" name="title">
+    </md-input-container>
+    
+    <md-select class="full-width" placeholder="Nośnik" [(ngModel)]="selectedCarrier" name="carrier">
+      <md-option *ngFor="let carrier of carriers" [value]="carrier.Name">
+        {{carrier.Name}}
+      </md-option>
+    </md-select>
+    <md-input-container class="full-width">
+      <input type="number" mdInput placeholder="Ilość" min="1" max="999">
+    </md-input-container>
+  </form>
+
+
+
+
+
+
+
+
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button md-dialog-close>Anuluj</button>
+  <button md-button [md-dialog-close]="true">Ok</button>
+</md-dialog-actions>

@@ -1,0 +1,30 @@
+﻿.example-fill-remaining-space {
+  flex: 1 1 auto;
+}
+.container{
+  padding: 0 10px;
+  margin:20px auto;
+  max-width:1200px;
+}
+
+md-toolbar {
+  .customToolbar {
+    h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    p {
+      font-size: 12px;
+      margin: 0;
+    }
+
+    .basketShop {
+      p {
+        font-size: 12px;
+        font-weight:700;
+        margin-right: 10px;
+      }
+    }
+  }
+}

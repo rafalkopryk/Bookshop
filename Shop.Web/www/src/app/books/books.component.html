@@ -1,0 +1,23 @@
+﻿<ng2-md-datatable>
+  <ng2-md-datatable-header>
+    <ng2-md-datatable-column sortableValue="Title">Nazwa</ng2-md-datatable-column>
+    <ng2-md-datatable-column sortableValue="ReleaseDate">Data wydania</ng2-md-datatable-column>
+    <ng2-md-datatable-column sortableValue="Price" numeric>Cena</ng2-md-datatable-column>
+    <ng2-md-datatable-column sortableValue="Author">Autor</ng2-md-datatable-column>
+    <ng2-md-datatable-column sortableValue="Publisher">Wydawnictwo</ng2-md-datatable-column>
+    <ng2-md-datatable-column numeric></ng2-md-datatable-column>
+  </ng2-md-datatable-header>
+  <tbody *ngFor="let book of books">
+    <ng2-md-datatable-row>
+      <td>{{book.Title}}</td>
+      <td>{{book.ReleaseDate |date:'dd.MM.yyyy'}}</td>
+      <td class="numeric">{{book.Price |number : '1.2-2'}}</td>
+      <td>{{book.Author}}</td>
+      <td>{{book.Publisher}}</td>
+      <td class="numeric"><button md-button (click)="openDialog(book)">do koszyka</button></td>
+    </ng2-md-datatable-row>
+  </tbody>
+</ng2-md-datatable>
+
+{{currentSortBy}}
+{{currentSortType}}
