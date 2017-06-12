@@ -1,4 +1,22 @@
 ﻿
 .full-width {
   width: 100%;
+  margin: 10px 0;
+
+  &.mat-input-underline {
+    display: none !important;
+  }
+}
+.mat-input-underline {
+  display: none !important;
+}
+
+
+md-dialog-content{
+
+  p{
+    width:100px;
+  }
+
+
 }

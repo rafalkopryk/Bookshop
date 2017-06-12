@@ -9,11 +9,11 @@
   </ng2-md-datatable-header>
   <tbody *ngFor="let book of books">
     <ng2-md-datatable-row>
-      <td>{{book.Title}}</td>
-      <td>{{book.ReleaseDate |date:'dd.MM.yyyy'}}</td>
-      <td class="numeric">{{book.Price |number : '1.2-2'}}</td>
-      <td>{{book.Author}}</td>
-      <td>{{book.Publisher}}</td>
+      <td [innerHTML]="book.Title"></td>
+      <td [innerHTML]="book.ReleaseDate |date:'dd.MM.yyyy'"></td>
+      <td [innerHTML]="book.Price |number : '1.2-2'" class="numeric"></td>
+      <td [innerHTML]="book.Author"></td>
+      <td [innerHTML]="book.Publisher"></td>
       <td class="numeric"><button md-button (click)="openDialog(book)">do koszyka</button></td>
     </ng2-md-datatable-row>
   </tbody>

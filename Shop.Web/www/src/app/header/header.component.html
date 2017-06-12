@@ -1,0 +1,32 @@
+﻿<md-toolbar color="primary">
+  <div fxLayout="column" class="customToolbar">
+    <h1>Ksiegarnia Internetowa</h1>
+    <p>Nasze sklepy prowadzimy z pasją!</p>
+  </div>
+  <div fxFlex></div>
+  <div fxLayout="row" class="customToolbar" fxShow.gt-xs="true" fxShow="false">
+    <div fxLayoutAlign="center center" class="basketShop">
+      <p><b>Twój koszyk</b></p>
+    </div>
+   
+      <button md-button [mdMenuTriggerFor]="basket" [innerHTML]="'Liczba produktów: '+numberOfItemsInBasket" style="border:1px solid"></button>
+
+      <md-menu #basket="mdMenu">
+        <md-list>
+          <md-list-item *ngFor="let book of list">
+            
+          </md-list-item>
+        </md-list>
+      </md-menu>
+
+
+ 
+  </div>
+
+  <button md-icon-button [mdMenuTriggerFor]="menu" fxShow.gt-xs="false" fxShow="true">
+    <md-icon>shopping_basket</md-icon> <span [innerHTML]="numberOfItemsInBasket"></span>
+  </button>
+  <md-menu #menu="mdMenu">
+    <button md-menu-item [innerHTML]="'Liczba produktów: '+numberOfItemsInBasket"></button>
+  </md-menu>
+</md-toolbar>

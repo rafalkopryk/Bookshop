@@ -7,7 +7,7 @@ import { AudiobooksComponent } from './audiobooks.component';
 import { EbooksComponent } from './ebooks.component';
 import { BooksService } from './books.service'
 import { MdDataTableModule } from 'ng2-md-datatable';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,24 +15,26 @@ import 'hammerjs';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AddToCartDialogComponent } from "./add-to-cart-dialog.component";
 import { CarriersService } from './carriers.service';
+import { SharedModule } from "app/shared/shared.module";
 
 
 
 
 @NgModule({
     imports: [
-      MaterialModule,
-      CommonModule,
-      BooksRoutingModule,
-      MdDataTableModule,
-      FlexLayoutModule,
-        BrowserAnimationsModule,
-        FormsModule
-  ],
+        FormsModule,
+        ReactiveFormsModule, 
+        MaterialModule,
+        CommonModule,
+        BooksRoutingModule,
+        MdDataTableModule,
+        FlexLayoutModule,
+        BrowserAnimationsModule,     
+    ],
     declarations: [BooksComponent, AudiobooksComponent, EbooksComponent, AddToCartDialogComponent],
-  providers: [BooksService, CarriersService],
-  entryComponents: [
-      AddToCartDialogComponent
-  ]
+    providers: [BooksService, CarriersService],
+    entryComponents: [
+        AddToCartDialogComponent
+    ]
 })
 export class BooksModule { }

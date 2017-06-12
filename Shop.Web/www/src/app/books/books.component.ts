@@ -13,7 +13,7 @@ import { AddToCartDialogComponent } from "./add-to-cart-dialog.component";
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.scss']
 })
-export class BooksComponent{
+export class BooksComponent implements AfterViewInit {
 
     currentSortBy: string | undefined;
     currentSortType = DatatableSortType.Ascending;
@@ -21,11 +21,12 @@ export class BooksComponent{
     selectedOption: string;
     @ViewChild(MdDataTableComponent) datatable: MdDataTableComponent;
 
-    constructor(private booksService: BooksService, public dialog: MdDialog) {
-        this.getBooks();
-    }
+    constructor(private booksService: BooksService, public dialog: MdDialog) {}
+
 
     ngAfterViewInit() {
+        this.getBooks();
+
         Observable.from(this.datatable.sortChange)
             .subscribe((e: IDatatableSortEvent) => this.getBooks(e.sortBy, e.sortType));
     }
@@ -38,11 +39,11 @@ export class BooksComponent{
 
     openDialog(book:Book) {
         let dialogRef = this.dialog.open(AddToCartDialogComponent, {
-            data: { title: book.Title }
+            data: book
         });
-        dialogRef.afterClosed().subscribe(result => {
-            this.selectedOption = result;
-        });
+        //dialogRef.afterClosed().subscribe(result => {
+        //    console.log(result);
+        //});
     }
     
 }

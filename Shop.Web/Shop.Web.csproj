@@ -231,6 +231,8 @@
     <Content Include="www\src\app\app.component.html" />
     <Content Include="www\src\app\books\add-to-cart-dialog.component.html" />
     <Content Include="www\src\app\books\books.component.html" />
+    <Content Include="www\src\app\header\header.component.html" />
+    <Content Include="www\src\app\navbar\navbar.component.html" />
     <Content Include="www\src\favicon.ico" />
     <Content Include="www\src\index.html" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -266,6 +268,8 @@
     <Content Include="www\.angular-cli.json" />
     <Content Include="www\README.md" />
     <Content Include="www\yarn.lock" />
+    <Content Include="www\src\app\navbar\navbar.component.scss" />
+    <Content Include="www\src\app\header\header.component.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -279,7 +283,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="www\src\app\app-routing.module.ts" />
-    <TypeScriptCompile Include="www\src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="www\src\app\app.component.ts" />
     <TypeScriptCompile Include="www\src\app\app.module.ts" />
     <TypeScriptCompile Include="www\src\app\books\add-to-cart-dialog.component.ts" />
@@ -291,7 +294,14 @@
     <TypeScriptCompile Include="www\src\app\books\books.service.ts" />
     <TypeScriptCompile Include="www\src\app\books\carrier.ts" />
     <TypeScriptCompile Include="www\src\app\books\carriers.service.ts" />
+    <TypeScriptCompile Include="www\src\app\books\basket-item.ts" />
     <TypeScriptCompile Include="www\src\app\books\ebooks.component.ts" />
+    <TypeScriptCompile Include="www\src\app\shared\basket.service.ts" />
+    <TypeScriptCompile Include="www\src\app\header\header.component.ts" />
+    <TypeScriptCompile Include="www\src\app\header\header.module.ts" />
+    <TypeScriptCompile Include="www\src\app\navbar\navbar.component.ts" />
+    <TypeScriptCompile Include="www\src\app\navbar\navbar.module.ts" />
+    <TypeScriptCompile Include="www\src\app\shared\shared.module.ts" />
     <TypeScriptCompile Include="www\src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="www\src\environments\environment.ts" />
     <TypeScriptCompile Include="www\src\main.ts" />
