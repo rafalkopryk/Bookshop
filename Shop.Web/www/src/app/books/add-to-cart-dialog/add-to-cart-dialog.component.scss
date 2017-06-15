@@ -1,0 +1,17 @@
+﻿md-input-container {
+  margin: 5px 0;
+}
+
+md-select {
+  margin-bottom: -5px;
+}
+
+button {
+  &.closeDialog {
+    position: absolute !important;
+    top: 5px;
+    right: 5px
+  }
+}
+
+

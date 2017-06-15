@@ -7,14 +7,21 @@ export class BooksService {
 
     books: Array<Book>;
 
-    public findBooks(sortBy?: string, sortType?: DatatableSortType): Array<Book> {
-        return [
+
+
+    public findBooks(query?: string, sortBy?: string, sortType?: DatatableSortType): Array<Book> {
+        let books = this.books.filter(book => (book.Title.startsWith(query) || query == null) || (book.Author.startsWith(query) || query == null));
+        return books;
+    }
+
+    constructor() {
+
+        this.books = [
             new Book(1, 'Władca Pierscienia', new Date(),32,'Jan Kowalski','Zak'),
             new Book(2, 'Władca Pierscienia1', new Date(), 32, 'Jan Kowalski', 'Zak'),
             new Book(3, 'Władca Pierscienia2', new Date(), 32, 'Jan Kowalski', 'Zak')
         ]
-    }
 
-  constructor() { }
+    }
 
 }

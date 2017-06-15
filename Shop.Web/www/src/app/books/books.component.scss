@@ -1,0 +1,36 @@
+﻿
+@media screen and (max-width: 800px) {
+  ng2-md-datatable {
+
+
+    ng2-md-datatable-header {
+      display: none;
+    }
+
+    ng2-md-datatable-row {
+      border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+
+      td {
+        line-height: 30px;
+        display: block;
+        text-align: right;
+        border-bottom: 1px dotted #ccc;
+        padding:0;
+
+        &:last-child {
+          text-align: center;
+          border-bottom: none;
+        }
+
+
+        &::before {
+          content: attr(data-label) !important;
+          float: left;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+

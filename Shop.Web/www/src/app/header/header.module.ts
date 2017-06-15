@@ -5,15 +5,18 @@ import { MaterialModule } from "@angular/material";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { SharedModule } from "app/shared/shared.module";
 import 'hammerjs';
+import { SearchEngineComponent } from './search-engine/search-engine.component';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
      CommonModule,
      MaterialModule,
       FlexLayoutModule,
+      FormsModule
       
     ],
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, SearchEngineComponent],
   providers: [],
   exports: [HeaderComponent]
 })

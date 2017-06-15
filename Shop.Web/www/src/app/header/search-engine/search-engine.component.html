@@ -1,0 +1,8 @@
+﻿<form (ngSubmit)="search()" fxLayout="row">
+  <div id="searchContent" fxLayoutAlign="start center">
+    <md-icon>search</md-icon>
+    <input placeholder="Przeszukaj książki" [(ngModel)]="query" name="query"/>
+    <button md-icon-button [fxHide]="!query" type="button" (click)="search(true)" ><md-icon>backspace</md-icon></button>
+    <button type="submit" md-button class="searchButton">Szukaj</button> 
+  </div>
+</form>

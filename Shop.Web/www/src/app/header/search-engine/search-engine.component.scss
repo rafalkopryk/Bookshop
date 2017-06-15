@@ -1,0 +1,47 @@
+﻿#searchContent {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: 3px;
+  cursor: text;
+
+
+  md-icon {
+    margin-left: 15px;
+    font-size: 18px;
+    height: 18px;
+    font-weight: 400;
+    opacity: 0.7;
+  }
+
+  input {
+    font-size: 12px !important;
+    color: white;
+    font-weight: 300;
+    background: transparent;
+    border: none;
+    outline: none;
+    width: calc(100% - 125px);
+    height: 38px;
+
+    &::placeholder {
+      color: white;
+      opacity: 0.7;
+    }
+  }
+
+  button {
+    height: 40px;
+
+    md-icon {
+      margin-left: 0;
+      font-size: 20px;
+      height: auto;
+      font-weight: normal;
+      opacity: 1;
+    }
+
+    &.searchButton {
+      background: rgba(0, 0, 0, 0.05);
+    }
+  }
+}

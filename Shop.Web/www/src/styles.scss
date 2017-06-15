@@ -27,15 +27,19 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 @include mat-datatable-theme($candy-app-theme);
 
 
+
+
 html, body {
+  font-family: Roboto, sans-serif;
   margin: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
-md-sidenav-container {
-  margin: 0;
-  max-width: 100%;
-  height: calc(100% - 64px);
+.mat-dialog-container {
+  max-width: 100vw !important;
+}
+.mat-tab-label {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
 }

@@ -9,6 +9,7 @@ import { AppRoutingModule } from "app/app-routing.module";
 import { SharedModule } from "app/shared/shared.module";
 import { MaterialModule } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BasketModule } from "app/basket/basket.module";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
       BrowserModule,
       AppRoutingModule,
       NavbarModule,
+      BasketModule,
       HeaderModule, 
       BooksModule,
       MaterialModule,

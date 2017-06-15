@@ -1,9 +1,16 @@
-﻿<nav md-tab-nav-bar>
+﻿
+<md-tab-group (selectedIndexChange)="onTabChange($event)" #nav>
+  <md-tab *ngFor="let navLink of navLinks; let i = index">
+    <template md-tab-label>{{navLink.label}}</template>
+  </md-tab>
+</md-tab-group>
+
+<!--<nav md-tab-nav-bar>
   <a md-tab-link
-     *ngFor="let tabLink of tabLinks; let i = index"
-     [routerLink]="tabLink.link"
+     *ngFor="let navLink of navLinks; let i = index"
+     [routerLink]="navLink.link"
      routerLinkActive #rla="routerLinkActive"
-     [active]="rla.isActive">
-    {{tabLink.label}}
+     [active]="rla.isActive"
+     [innerHTML]="navLink.label">
   </a>
-</nav>
+</nav>-->

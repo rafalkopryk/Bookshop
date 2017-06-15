@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { BasketService } from "app/shared/basket.service";
-import { BasketItem } from "app/books/basket-item";
+import { BasketItem } from "app/basket/basket-item";
+import { SidenavService } from "app/shared/sidenav.service";
 
 @Component({
   selector: 'app-header',
@@ -9,29 +10,24 @@ import { BasketItem } from "app/books/basket-item";
 })
 export class HeaderComponent implements OnInit {
 
-    basket: Array<BasketItem> = [];
     numberOfItemsInBasket: number;
-    list: number[];
-    constructor(private basketService: BasketService) {
-       
-    }
+    searchBar: boolean;
+
+    constructor(private basketService: BasketService, private sidenavService:SidenavService) { }
 
     ngOnInit() {
-        this.basket = [];
+        this.searchBar = false;
         this.numberOfItemsInBasket = 0;
         this.basketService.elements$.subscribe(item => {
-            console.log(this.basket);
-            this.basket.push(item);
-            this.numberOfItemsInBasket = this.countAllElements();
-        })
-        
+            this.numberOfItemsInBasket += item.quantity;
+        }) 
     }
 
-    private countAllElements(): number {
-        let result: number = 0;
-        this.basket.forEach(item => result += item.quantity);
-        return result;
+    toggleSidenav() {
+        this.sidenavService.toggle();
     }
 
-
+    toggleSearchbar() {
+        this.searchBar=!this.searchBar;
+    }
 }

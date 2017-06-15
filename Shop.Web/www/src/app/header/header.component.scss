@@ -1,21 +1,34 @@
 ﻿md-toolbar {
-  .customToolbar {
-    h1 {
-      font-size: 20px;
-      margin: 0;
-    }
+  z-index: 10;
 
+  h1 {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  p {
+    font-size: 12px;
+    margin: 0;
+  }
+
+  .basket {
     p {
       font-size: 12px;
-      margin: 0;
+      font-weight: 700;
+      margin-right: 10px;
     }
 
-    .basketShop {
-      p {
-        font-size: 12px;
-        font-weight: 700;
-        margin-right: 10px;
-      }
+    button {
+      border: 1px solid;
+    }
+  }
+
+  .searchContainer {
+    width: 100%;
+
+    @media screen and (min-width: 599px) {
+      width: 500px;
+      margin: 0 15px;
     }
   }
 }

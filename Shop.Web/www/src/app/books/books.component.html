@@ -9,15 +9,12 @@
   </ng2-md-datatable-header>
   <tbody *ngFor="let book of books">
     <ng2-md-datatable-row>
-      <td [innerHTML]="book.Title"></td>
-      <td [innerHTML]="book.ReleaseDate |date:'dd.MM.yyyy'"></td>
-      <td [innerHTML]="book.Price |number : '1.2-2'" class="numeric"></td>
-      <td [innerHTML]="book.Author"></td>
-      <td [innerHTML]="book.Publisher"></td>
+      <td [innerHTML]="book.Title" data-label="Nazwa"></td>
+      <td [innerHTML]="book.ReleaseDate |date:'dd.MM.yyyy'" data-label="Data wydania"></td>
+      <td [innerHTML]="book.Price |number : '1.2-2'" class="numeric" data-label="Cena"></td>
+      <td [innerHTML]="book.Author" data-label="Autor"></td>
+      <td [innerHTML]="book.Publisher" data-label="Wydawnictwo"></td>
       <td class="numeric"><button md-button (click)="openDialog(book)">do koszyka</button></td>
     </ng2-md-datatable-row>
   </tbody>
 </ng2-md-datatable>
-
-{{currentSortBy}}
-{{currentSortType}}

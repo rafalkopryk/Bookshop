@@ -1,32 +1,32 @@
 ﻿<md-toolbar color="primary">
-  <div fxLayout="column" class="customToolbar">
+  
+  
+  <button md-icon-button fxHide.gt-xs [fxHide.xs]="!searchBar" (click)="toggleSearchbar()"><md-icon>arrow_back</md-icon></button>
+  
+  <div fxLayout="column" [fxHide.xs]="searchBar">
     <h1>Ksiegarnia Internetowa</h1>
     <p>Nasze sklepy prowadzimy z pasją!</p>
   </div>
+  
+
   <div fxFlex></div>
-  <div fxLayout="row" class="customToolbar" fxShow.gt-xs="true" fxShow="false">
-    <div fxLayoutAlign="center center" class="basketShop">
-      <p><b>Twój koszyk</b></p>
-    </div>
-   
-      <button md-button [mdMenuTriggerFor]="basket" [innerHTML]="'Liczba produktów: '+numberOfItemsInBasket" style="border:1px solid"></button>
 
-      <md-menu #basket="mdMenu">
-        <md-list>
-          <md-list-item *ngFor="let book of list">
-            
-          </md-list-item>
-        </md-list>
-      </md-menu>
-
-
- 
+  <div class="searchContainer" [fxHide.xs]="!searchBar">
+    <app-search-engine></app-search-engine>
   </div>
 
-  <button md-icon-button [mdMenuTriggerFor]="menu" fxShow.gt-xs="false" fxShow="true">
+  <div fxFlex></div>
+  <button md-icon-button fxHide.gt-xs [fxHide.xs]="searchBar" (click)="toggleSearchbar()"><md-icon>search</md-icon></button>
+
+
+  <button md-icon-button (click)="toggleSidenav()" fxHide.gt-sm [fxHide.xs]="searchBar">
     <md-icon>shopping_basket</md-icon> <span [innerHTML]="numberOfItemsInBasket"></span>
   </button>
-  <md-menu #menu="mdMenu">
-    <button md-menu-item [innerHTML]="'Liczba produktów: '+numberOfItemsInBasket"></button>
-  </md-menu>
+  
+  <div fxLayout="row" fxLayoutAlign="center center" fxShow.gt-sm fxHide class="basket">
+    <p>Twój koszyk</p>
+    <button md-button (click)="toggleSidenav()" [innerHTML]="'Liczba produktów: '+numberOfItemsInBasket"></button>
+  </div>
+ 
+
 </md-toolbar>

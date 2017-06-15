@@ -1,12 +1,25 @@
-﻿<app-header></app-header>
-<md-sidenav-container>
-  <div class="container">
-    <md-card>
-      <app-navbar></app-navbar>
-      <router-outlet></router-outlet>
-    </md-card>
- </div>
-</md-sidenav-container>
+﻿<section class="app flex-container" fxLayout="column" fxLayoutAlign="start stretch">
+  <app-header></app-header>
+  <md-sidenav-container fxFlex>
+    <md-sidenav mode="hover" align="end" class="mat-elevation-z6" opened="false" #sidenav>
+      <app-basket></app-basket>
+    </md-sidenav>
+    
+    
+    <div class="container">
+      
+      <md-card>
+        <app-navbar></app-navbar>
+        <router-outlet></router-outlet>
+      </md-card>
+    </div>
+  </md-sidenav-container>
+
+</section>
+
+
+
+
 
 
 

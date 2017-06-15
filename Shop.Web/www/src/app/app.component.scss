@@ -1,9 +1,29 @@
-﻿.example-fill-remaining-space {
-  flex: 1 1 auto;
+﻿
+.app {
+  height: 100vh;
 }
-.container{
+
+.container {
   padding: 0 10px;
-  margin:20px auto;
-  max-width:1200px;
+  margin: 20px auto;
+  max-width: 1200px;
 }
+
+md-sidenav-container {
+  height: calc(100% - 56px);
+
+  @media screen and (min-width: 599px) {
+    height: calc(100% - 64px);
+  }
+
+  md-sidenav {
+    width: 80%;
+
+    @media screen and (min-width: 599px) {
+      width: 40vh;
+    }
+  }
+}
+
+
 

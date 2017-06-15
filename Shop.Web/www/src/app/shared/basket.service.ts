@@ -1,6 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { Subject } from "rxjs/Subject";
-import { BasketItem } from "app/books/basket-item";
+import { BasketItem } from "app/basket/basket-item";
 
 @Injectable()
 export class BasketService {
