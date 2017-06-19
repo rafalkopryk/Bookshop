@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class BooksService {
 
-    private resourceUrl  = '/api/books';
+    private resourceUrl  = 'http://localhost:63714/api/books';
     private requestOptions: RequestOptions;
 
     constructor(private http: Http) {

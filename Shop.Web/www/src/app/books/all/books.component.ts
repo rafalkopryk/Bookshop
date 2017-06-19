@@ -24,7 +24,7 @@ export class BooksComponent implements OnInit, OnDestroy {
     query: string;
     currentSortBy: string;
     currentSortType : DatatableSortType;
-    books: Book[] = [];
+    books: Book[];
     subscription: Subscription;
 
     @ViewChild(MdDataTableComponent)
@@ -59,18 +59,21 @@ export class BooksComponent implements OnInit, OnDestroy {
 
 
     protected getBooks(sortBy: string = this.currentSortBy, sortType: DatatableSortType = this.currentSortType, query?: string) {
+        
+        let books = this.books;
+        this.books = [];
         this.currentSortBy = sortBy;
         this.currentSortType = sortType;
-
         let orderBy = this.currentSortType == DatatableSortType.Descending ? this.currentSortBy+"_desc" : this.currentSortBy;
-        console.log(orderBy);
-
         this.booksService.getBooks(query,orderBy).subscribe(
             response =>{
-                if (!response.length)
+                if (!response.length){
                     this.dialog.open(NoResultsAlertComponent, { role: "alertdialog", width: "300px"});
+                    this.books = books;
+                }
+                    
                 else
-                    this.books = response;
+                    setTimeout(()=>{ this.books = response}, 500);
             }
         );
     }

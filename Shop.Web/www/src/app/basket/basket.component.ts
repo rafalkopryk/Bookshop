@@ -9,7 +9,7 @@ import { BasketService } from "app/shared/basket.service";
 })
 export class BasketComponent implements OnInit {
   
-  basket: Array<BasketItem> = [];
+  basket: BasketItem[];
 
   constructor(private basketService: BasketService) { }
 

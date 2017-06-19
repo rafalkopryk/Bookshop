@@ -28,7 +28,7 @@ export class NoveltiesComponent extends BooksComponent implements OnInit {
                 if (!response.length)
                     this.dialog.open(NoResultsAlertComponent, { role: "alertdialog", width: "300px"});
                 else
-                    this.books = response;
+                    setTimeout(()=>{ this.books = response}, 500);
             }
         );
     }
