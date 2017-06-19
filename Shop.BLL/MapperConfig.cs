@@ -19,7 +19,8 @@ namespace Shop.BLL
 
                 obj.CreateMap<Book, BookDTO>()
                     .AfterMap((model, dto) => dto.Author = String.Format("{0} {1}", model.Author.FirstName, model.Author.LastName))
-                    .AfterMap((model, dto) => dto.Publisher = model.Publisher.Name);
+                    .AfterMap((model, dto) => dto.Publisher = model.Publisher.Name)
+                    .AfterMap((model, dto) => dto.Type = model.Type.Equals(TypeOfBook.Audiobook) ? "Audiobook" : "E-Book");
             });
         }
     }

@@ -7,45 +7,45 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class BooksService {
 
-    private resourceUrl  = 'http://localhost:63714/api/books';
+    private resourceUrl  = '/api/books';
     private requestOptions: RequestOptions;
 
     constructor(private http: Http) {
         this.requestOptions = new RequestOptions();
     }
 
-    getBooks(query?: string, sortBy?: string, sortType?: DatatableSortType): Observable<Book[]> {   
-        this.setRequestParametrs(query,sortBy,sortType);
+    getBooks(query?: string, orderBy?: string): Observable<Book[]> {   
+        this.setRequestParametrs(query,orderBy);
         return this.http.get(this.resourceUrl + "/all", this.requestOptions)
             .map(this.extractData)
     }
 
-    getEbooks(query?: string, sortBy?: string, sortType?: DatatableSortType): Observable<Book[]> {   
-        this.setRequestParametrs(query,sortBy,sortType);
+    getEbooks(query?: string, orderBy?: string): Observable<Book[]> {   
+        this.setRequestParametrs(query,orderBy);
         return this.http.get(this.resourceUrl + "/ebooks", this.requestOptions)
             .map(this.extractData)
     }
 
-    getAudiobooks(query?: string, sortBy?: string, sortType?: DatatableSortType): Observable<Book[]> {   
-        this.setRequestParametrs(query,sortBy,sortType);
+    getAudiobooks(query?: string, orderBy?: string): Observable<Book[]> {   
+        this.setRequestParametrs(query,orderBy);
         return this.http.get(this.resourceUrl + "/audiobooks", this.requestOptions)
             .map(this.extractData)
     }
 
-    getNovelties(query?: string, sortBy?: string, sortType?: DatatableSortType): Observable<Book[]> {   
-        this.setRequestParametrs(query,sortBy,sortType);
+    getNovelties(query?: string,  orderBy?: string): Observable<Book[]> {   
+        this.setRequestParametrs(query,orderBy);
         return this.http.get(this.resourceUrl + "/novelties", this.requestOptions)
             .map(this.extractData)
     }
 
-    getPreviews(query?: string, sortBy?: string, sortType?: DatatableSortType): Observable<Book[]> {   
-        this.setRequestParametrs(query,sortBy,sortType);
+    getPreviews(query?: string,  orderBy?: string): Observable<Book[]> {   
+        this.setRequestParametrs(query,orderBy);
         return this.http.get(this.resourceUrl + "/previews", this.requestOptions)
             .map(this.extractData)
     }
 
-    getSuperBargains(query?: string, sortBy?: string, sortType?: DatatableSortType): Observable<Book[]> {   
-        this.setRequestParametrs(query,sortBy,sortType);
+    getSuperBargains(query?: string,  orderBy?: string): Observable<Book[]> {   
+        this.setRequestParametrs(query,orderBy);
         return this.http.get(this.resourceUrl + "/super-bargains", this.requestOptions)
             .map(this.extractData)
     }
@@ -54,11 +54,10 @@ export class BooksService {
         return <Book[]>res.json();
     }
 
-    private setRequestParametrs(query?: string, sortBy?: string, sortType?: DatatableSortType) {
+    private setRequestParametrs(query?: string, orderBy?: string) {
         let params: URLSearchParams = new URLSearchParams();
         params.set('query', query);
-        params.set('sortBy', sortBy);
-        params.set('sortType', sortType.toString());
+        params.set('orderBy', orderBy);
         this.requestOptions.params = params;
     }  
 }

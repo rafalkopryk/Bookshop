@@ -17,10 +17,13 @@ export class SuperBargainsComponent extends BooksComponent implements OnInit {
       super(booksService,dialog,searchService);
     }
 
-    getBooks(sortBy: string | undefined = this.currentSortBy, sortType: DatatableSortType = this.currentSortType, query?: string) {
+    getBooks(sortBy: string = this.currentSortBy, sortType: DatatableSortType = this.currentSortType, query?: string) {
         this.currentSortBy = sortBy;
         this.currentSortType = sortType;
-        this.booksService.getSuperBargains(query,sortBy,sortType).subscribe(
+
+        let orderBy = this.currentSortType == DatatableSortType.Descending ? this.currentSortBy+"_desc" : this.currentSortBy;
+
+        this.booksService.getSuperBargains(query,orderBy).subscribe(
             response =>{
                 if (!response.length)
                     this.dialog.open(NoResultsAlertComponent, { role: "alertdialog", width: "300px"});
@@ -29,5 +32,4 @@ export class SuperBargainsComponent extends BooksComponent implements OnInit {
             }
         );
     }
-
 }

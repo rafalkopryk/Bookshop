@@ -21,7 +21,6 @@ namespace Shop.BLL.Services.Impl
 
         public IEnumerable<CarrierDTO> GetAll()
         {
-          
             return Mapper.Map<IEnumerable<CarrierDTO>>(_carrierRepository.Find());
         }
     }

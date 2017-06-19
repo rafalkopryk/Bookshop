@@ -18,10 +18,13 @@ export class AudiobooksComponent extends BooksComponent  {
       super(booksService,dialog,searchService);
     }
 
-    getBooks(sortBy: string | undefined = this.currentSortBy, sortType: DatatableSortType = this.currentSortType, query?: string) {
+    getBooks(sortBy: string = this.currentSortBy, sortType: DatatableSortType = this.currentSortType, query?: string) {
         this.currentSortBy = sortBy;
         this.currentSortType = sortType;
-        this.booksService.getAudiobooks(query,sortBy,sortType).subscribe(
+
+        let orderBy = this.currentSortType == DatatableSortType.Descending ? this.currentSortBy+"_desc" : this.currentSortBy;
+
+        this.booksService.getAudiobooks(query,orderBy).subscribe(
             response =>{
                 if (!response.length)
                     this.dialog.open(NoResultsAlertComponent, { role: "alertdialog", width: "300px"});

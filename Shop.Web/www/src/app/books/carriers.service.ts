@@ -7,7 +7,7 @@ import { Subscription } from "rxjs/Subscription";
 @Injectable()
 export class CarriersService {
     
-    private resourceUrl  = 'http://localhost:63714/api/carriers';
+    private resourceUrl  = '/api/carriers';
     constructor(private http: Http) {}
 
     getCarriers(): Observable<Carrier[]> {

@@ -420,8 +420,8 @@ AddToCartDialogComponent = __decorate([
         template: __webpack_require__("./src/app/books/add-to-cart-dialog/add-to-cart-dialog.component.html"),
         styles: [__webpack_require__("./src/app/books/add-to-cart-dialog/add-to-cart-dialog.component.scss")]
     }),
-    __param(2, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["h" /* Inject */])(__WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MD_DIALOG_DATA */])),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MdDialogRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MdDialogRef */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_books_carriers_service__["a" /* CarriersService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_books_carriers_service__["a" /* CarriersService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5_app_books_book__["a" /* Book */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_books_book__["a" /* Book */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["i" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["i" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6_app_shared_basket_service__["a" /* BasketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_app_shared_basket_service__["a" /* BasketService */]) === "function" && _e || Object])
+    __param(2, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["h" /* Inject */])(__WEBPACK_IMPORTED_MODULE_1__angular_material__["h" /* MD_DIALOG_DATA */])),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["i" /* MdDialogRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["i" /* MdDialogRef */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_books_carriers_service__["a" /* CarriersService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_books_carriers_service__["a" /* CarriersService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5_app_books_book__["a" /* Book */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_books_book__["a" /* Book */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["i" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["i" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6_app_shared_basket_service__["a" /* BasketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_app_shared_basket_service__["a" /* BasketService */]) === "function" && _e || Object])
 ], AddToCartDialogComponent);
 
 var _a, _b, _c, _d, _e;
@@ -468,11 +468,12 @@ var BooksComponent = (function () {
         this.booksService = booksService;
         this.dialog = dialog;
         this.searchService = searchService;
-        this.currentSortType = __WEBPACK_IMPORTED_MODULE_3_ng2_md_datatable__["b" /* DatatableSortType */].Ascending;
         this.books = [];
     }
     BooksComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.currentSortBy = "title";
+        this.currentSortType = __WEBPACK_IMPORTED_MODULE_3_ng2_md_datatable__["b" /* DatatableSortType */].Ascending;
         this.getBooks(this.currentSortBy, this.currentSortType, this.query);
         this.subscription = this.searchService.query$.subscribe(function (query) {
             _this.query = query;
@@ -490,7 +491,9 @@ var BooksComponent = (function () {
         if (sortType === void 0) { sortType = this.currentSortType; }
         this.currentSortBy = sortBy;
         this.currentSortType = sortType;
-        this.booksService.getBooks(query, sortBy, sortType).subscribe(function (response) {
+        var orderBy = this.currentSortType == __WEBPACK_IMPORTED_MODULE_3_ng2_md_datatable__["b" /* DatatableSortType */].Descending ? this.currentSortBy + "_desc" : this.currentSortBy;
+        console.log(orderBy);
+        this.booksService.getBooks(query, orderBy).subscribe(function (response) {
             if (!response.length)
                 _this.dialog.open(__WEBPACK_IMPORTED_MODULE_8_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
             else
@@ -526,12 +529,13 @@ var _a, _b, _c, _d;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__books_service__ = __webpack_require__("./src/app/books/books.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_from__ = __webpack_require__("./node_modules/rxjs/add/observable/from.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_from___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_from__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material__ = __webpack_require__("./node_modules/@angular/material/@angular/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_shared_search_service__ = __webpack_require__("./src/app/shared/search.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_books_no_results_alert_no_results_alert_component__ = __webpack_require__("./src/app/books/no-results-alert/no-results-alert.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__all_books_component__ = __webpack_require__("./src/app/books/all/books.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_md_datatable__ = __webpack_require__("./node_modules/ng2-md-datatable/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_from__ = __webpack_require__("./node_modules/rxjs/add/observable/from.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_from___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_from__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__("./node_modules/@angular/material/@angular/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_shared_search_service__ = __webpack_require__("./src/app/shared/search.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__ = __webpack_require__("./src/app/books/no-results-alert/no-results-alert.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__all_books_component__ = __webpack_require__("./src/app/books/all/books.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AudiobooksComponent; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -559,6 +563,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AudiobooksComponent = (function (_super) {
     __extends(AudiobooksComponent, _super);
     function AudiobooksComponent(booksService, dialog, searchService) {
@@ -574,22 +579,23 @@ var AudiobooksComponent = (function (_super) {
         if (sortType === void 0) { sortType = this.currentSortType; }
         this.currentSortBy = sortBy;
         this.currentSortType = sortType;
-        this.booksService.getAudiobooks(query, sortBy, sortType).subscribe(function (response) {
+        var orderBy = this.currentSortType == __WEBPACK_IMPORTED_MODULE_2_ng2_md_datatable__["b" /* DatatableSortType */].Descending ? this.currentSortBy + "_desc" : this.currentSortBy;
+        this.booksService.getAudiobooks(query, orderBy).subscribe(function (response) {
             if (!response.length)
-                _this.dialog.open(__WEBPACK_IMPORTED_MODULE_5_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
+                _this.dialog.open(__WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
             else
                 _this.books = response;
         });
     };
     return AudiobooksComponent;
-}(__WEBPACK_IMPORTED_MODULE_6__all_books_component__["a" /* BooksComponent */]));
+}(__WEBPACK_IMPORTED_MODULE_7__all_books_component__["a" /* BooksComponent */]));
 AudiobooksComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
         selector: 'app-audiobooks',
         template: __webpack_require__("./src/app/books/books.component.html"),
         styles: [__webpack_require__("./src/app/books/books.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_material__["b" /* MdDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_material__["b" /* MdDialog */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_app_shared_search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_shared_search_service__["a" /* SearchService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__books_service__["a" /* BooksService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__angular_material__["b" /* MdDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_material__["b" /* MdDialog */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5_app_shared_search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_shared_search_service__["a" /* SearchService */]) === "function" && _c || Object])
 ], AudiobooksComponent);
 
 var _a, _b, _c;
@@ -666,7 +672,7 @@ BooksRoutingModule = __decorate([
 /***/ "./src/app/books/books.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<ng2-md-datatable>\r\n  <ng2-md-datatable-header>\r\n    <ng2-md-datatable-column sortableValue=\"Title\">Nazwa</ng2-md-datatable-column>\r\n    <ng2-md-datatable-column sortableValue=\"ReleaseDate\">Data wydania</ng2-md-datatable-column>\r\n    <ng2-md-datatable-column sortableValue=\"Price\" numeric>Cena</ng2-md-datatable-column>\r\n    <ng2-md-datatable-column sortableValue=\"Author\">Autor</ng2-md-datatable-column>\r\n    <ng2-md-datatable-column sortableValue=\"Publisher\">Wydawnictwo</ng2-md-datatable-column>\r\n    <ng2-md-datatable-column numeric></ng2-md-datatable-column>\r\n  </ng2-md-datatable-header>\r\n  <tbody *ngFor=\"let book of books\">\r\n    <ng2-md-datatable-row>\r\n      <td [innerHTML]=\"book.Title\" data-label=\"Nazwa\"></td>\r\n      <td [innerHTML]=\"book.ReleaseDate |date:'dd.MM.yyyy'\" data-label=\"Data wydania\"></td>\r\n      <td [innerHTML]=\"book.Price |number : '1.2-2'\" class=\"numeric\" data-label=\"Cena\"></td>\r\n      <td [innerHTML]=\"book.Author\" data-label=\"Autor\"></td>\r\n      <td [innerHTML]=\"book.Publisher\" data-label=\"Wydawnictwo\"></td>\r\n      <td class=\"numeric\"><button md-button (click)=\"openDialog(book)\">do koszyka</button></td>\r\n    </ng2-md-datatable-row>\r\n  </tbody>\r\n</ng2-md-datatable>"
+module.exports = "<ng2-md-datatable>\r\n  <ng2-md-datatable-header>\r\n    <ng2-md-datatable-column sortableValue=\"title\">Nazwa</ng2-md-datatable-column>\r\n    <ng2-md-datatable-column sortableValue=\"releaseDate\">Data wydania</ng2-md-datatable-column>\r\n    <ng2-md-datatable-column sortableValue=\"price\" numeric>Cena</ng2-md-datatable-column>\r\n    <ng2-md-datatable-column sortableValue=\"author\">Autor</ng2-md-datatable-column>\r\n    <ng2-md-datatable-column sortableValue=\"publisher\">Wydawnictwo</ng2-md-datatable-column>\r\n    <ng2-md-datatable-column numeric></ng2-md-datatable-column>\r\n  </ng2-md-datatable-header>\r\n  <tbody *ngFor=\"let book of books\">\r\n    <ng2-md-datatable-row>\r\n      <td [innerHTML]=\"book.Title\" data-label=\"Nazwa\"></td>\r\n      <td [innerHTML]=\"book.ReleaseDate |date:'dd.MM.yyyy'\" data-label=\"Data wydania\"></td>\r\n      <td [innerHTML]=\"book.Price |number : '1.2-2'\" class=\"numeric\" data-label=\"Cena\"></td>\r\n      <td [innerHTML]=\"book.Author\" data-label=\"Autor\"></td>\r\n      <td [innerHTML]=\"book.Publisher\" data-label=\"Wydawnictwo\"></td>\r\n      <td class=\"numeric\"><button md-button (click)=\"openDialog(book)\">do koszyka</button></td>\r\n    </ng2-md-datatable-row>\r\n  </tbody>\r\n</ng2-md-datatable>"
 
 /***/ }),
 
@@ -791,47 +797,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var BooksService = (function () {
     function BooksService(http) {
         this.http = http;
-        this.resourceUrl = 'http://localhost:63714/api/books';
+        this.resourceUrl = '/api/books';
         this.requestOptions = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]();
     }
-    BooksService.prototype.getBooks = function (query, sortBy, sortType) {
-        this.setRequestParametrs(query, sortBy, sortType);
+    BooksService.prototype.getBooks = function (query, orderBy) {
+        this.setRequestParametrs(query, orderBy);
         return this.http.get(this.resourceUrl + "/all", this.requestOptions)
             .map(this.extractData);
     };
-    BooksService.prototype.getEbooks = function (query, sortBy, sortType) {
-        this.setRequestParametrs(query, sortBy, sortType);
+    BooksService.prototype.getEbooks = function (query, orderBy) {
+        this.setRequestParametrs(query, orderBy);
         return this.http.get(this.resourceUrl + "/ebooks", this.requestOptions)
             .map(this.extractData);
     };
-    BooksService.prototype.getAudiobooks = function (query, sortBy, sortType) {
-        this.setRequestParametrs(query, sortBy, sortType);
+    BooksService.prototype.getAudiobooks = function (query, orderBy) {
+        this.setRequestParametrs(query, orderBy);
         return this.http.get(this.resourceUrl + "/audiobooks", this.requestOptions)
             .map(this.extractData);
     };
-    BooksService.prototype.getNovelties = function (query, sortBy, sortType) {
-        this.setRequestParametrs(query, sortBy, sortType);
+    BooksService.prototype.getNovelties = function (query, orderBy) {
+        this.setRequestParametrs(query, orderBy);
         return this.http.get(this.resourceUrl + "/novelties", this.requestOptions)
             .map(this.extractData);
     };
-    BooksService.prototype.getPreviews = function (query, sortBy, sortType) {
-        this.setRequestParametrs(query, sortBy, sortType);
+    BooksService.prototype.getPreviews = function (query, orderBy) {
+        this.setRequestParametrs(query, orderBy);
         return this.http.get(this.resourceUrl + "/previews", this.requestOptions)
             .map(this.extractData);
     };
-    BooksService.prototype.getSuperBargains = function (query, sortBy, sortType) {
-        this.setRequestParametrs(query, sortBy, sortType);
+    BooksService.prototype.getSuperBargains = function (query, orderBy) {
+        this.setRequestParametrs(query, orderBy);
         return this.http.get(this.resourceUrl + "/super-bargains", this.requestOptions)
             .map(this.extractData);
     };
     BooksService.prototype.extractData = function (res) {
         return res.json();
     };
-    BooksService.prototype.setRequestParametrs = function (query, sortBy, sortType) {
+    BooksService.prototype.setRequestParametrs = function (query, orderBy) {
         var params = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* URLSearchParams */]();
         params.set('query', query);
-        params.set('sortBy', sortBy);
-        params.set('sortType', sortType.toString());
+        params.set('orderBy', orderBy);
         this.requestOptions.params = params;
     };
     return BooksService;
@@ -867,7 +872,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var CarriersService = (function () {
     function CarriersService(http) {
         this.http = http;
-        this.resourceUrl = 'http://localhost:63714/api/carriers';
+        this.resourceUrl = '/api/carriers';
     }
     CarriersService.prototype.getCarriers = function () {
         return this.http.get(this.resourceUrl)
@@ -894,7 +899,8 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_books_books_service__ = __webpack_require__("./src/app/books/books.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material__ = __webpack_require__("./node_modules/@angular/material/@angular/material.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_shared_search_service__ = __webpack_require__("./src/app/shared/search.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_books_no_results_alert_no_results_alert_component__ = __webpack_require__("./src/app/books/no-results-alert/no-results-alert.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng2_md_datatable__ = __webpack_require__("./node_modules/ng2-md-datatable/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__ = __webpack_require__("./src/app/books/no-results-alert/no-results-alert.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EbooksComponent; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -921,6 +927,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var EbooksComponent = (function (_super) {
     __extends(EbooksComponent, _super);
     function EbooksComponent(booksService, dialog, searchService) {
@@ -936,9 +943,10 @@ var EbooksComponent = (function (_super) {
         if (sortType === void 0) { sortType = this.currentSortType; }
         this.currentSortBy = sortBy;
         this.currentSortType = sortType;
-        this.booksService.getEbooks(query, sortBy, sortType).subscribe(function (response) {
+        var orderBy = this.currentSortType == __WEBPACK_IMPORTED_MODULE_5_ng2_md_datatable__["b" /* DatatableSortType */].Descending ? this.currentSortBy + "_desc" : this.currentSortBy;
+        this.booksService.getEbooks(query, orderBy).subscribe(function (response) {
             if (!response.length)
-                _this.dialog.open(__WEBPACK_IMPORTED_MODULE_5_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
+                _this.dialog.open(__WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
             else
                 _this.books = response;
         });
@@ -1029,7 +1037,8 @@ NoResultsAlertComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_books_books_service__ = __webpack_require__("./src/app/books/books.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material__ = __webpack_require__("./node_modules/@angular/material/@angular/material.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_shared_search_service__ = __webpack_require__("./src/app/shared/search.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_books_no_results_alert_no_results_alert_component__ = __webpack_require__("./src/app/books/no-results-alert/no-results-alert.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng2_md_datatable__ = __webpack_require__("./node_modules/ng2-md-datatable/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__ = __webpack_require__("./src/app/books/no-results-alert/no-results-alert.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NoveltiesComponent; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -1056,6 +1065,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var NoveltiesComponent = (function (_super) {
     __extends(NoveltiesComponent, _super);
     function NoveltiesComponent(booksService, dialog, searchService) {
@@ -1071,9 +1081,10 @@ var NoveltiesComponent = (function (_super) {
         if (sortType === void 0) { sortType = this.currentSortType; }
         this.currentSortBy = sortBy;
         this.currentSortType = sortType;
-        this.booksService.getNovelties(query, sortBy, sortType).subscribe(function (response) {
+        var orderBy = this.currentSortType == __WEBPACK_IMPORTED_MODULE_5_ng2_md_datatable__["b" /* DatatableSortType */].Descending ? this.currentSortBy + "_desc" : this.currentSortBy;
+        this.booksService.getNovelties(query, orderBy).subscribe(function (response) {
             if (!response.length)
-                _this.dialog.open(__WEBPACK_IMPORTED_MODULE_5_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
+                _this.dialog.open(__WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
             else
                 _this.books = response;
         });
@@ -1103,7 +1114,8 @@ var _a, _b, _c;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_books_books_service__ = __webpack_require__("./src/app/books/books.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material__ = __webpack_require__("./node_modules/@angular/material/@angular/material.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_shared_search_service__ = __webpack_require__("./src/app/shared/search.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_books_no_results_alert_no_results_alert_component__ = __webpack_require__("./src/app/books/no-results-alert/no-results-alert.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng2_md_datatable__ = __webpack_require__("./node_modules/ng2-md-datatable/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__ = __webpack_require__("./src/app/books/no-results-alert/no-results-alert.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PreviewsComponent; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -1130,6 +1142,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PreviewsComponent = (function (_super) {
     __extends(PreviewsComponent, _super);
     function PreviewsComponent(booksService, dialog, searchService) {
@@ -1145,9 +1158,10 @@ var PreviewsComponent = (function (_super) {
         if (sortType === void 0) { sortType = this.currentSortType; }
         this.currentSortBy = sortBy;
         this.currentSortType = sortType;
-        this.booksService.getPreviews(query, sortBy, sortType).subscribe(function (response) {
+        var orderBy = this.currentSortType == __WEBPACK_IMPORTED_MODULE_5_ng2_md_datatable__["b" /* DatatableSortType */].Descending ? this.currentSortBy + "_desc" : this.currentSortBy;
+        this.booksService.getPreviews(query, orderBy).subscribe(function (response) {
             if (!response.length)
-                _this.dialog.open(__WEBPACK_IMPORTED_MODULE_5_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
+                _this.dialog.open(__WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
             else
                 _this.books = response;
         });
@@ -1177,7 +1191,8 @@ var _a, _b, _c;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_books_books_service__ = __webpack_require__("./src/app/books/books.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material__ = __webpack_require__("./node_modules/@angular/material/@angular/material.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_shared_search_service__ = __webpack_require__("./src/app/shared/search.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_books_no_results_alert_no_results_alert_component__ = __webpack_require__("./src/app/books/no-results-alert/no-results-alert.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng2_md_datatable__ = __webpack_require__("./node_modules/ng2-md-datatable/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__ = __webpack_require__("./src/app/books/no-results-alert/no-results-alert.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SuperBargainsComponent; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -1204,6 +1219,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var SuperBargainsComponent = (function (_super) {
     __extends(SuperBargainsComponent, _super);
     function SuperBargainsComponent(booksService, dialog, searchService) {
@@ -1219,9 +1235,10 @@ var SuperBargainsComponent = (function (_super) {
         if (sortType === void 0) { sortType = this.currentSortType; }
         this.currentSortBy = sortBy;
         this.currentSortType = sortType;
-        this.booksService.getSuperBargains(query, sortBy, sortType).subscribe(function (response) {
+        var orderBy = this.currentSortType == __WEBPACK_IMPORTED_MODULE_5_ng2_md_datatable__["b" /* DatatableSortType */].Descending ? this.currentSortBy + "_desc" : this.currentSortBy;
+        this.booksService.getSuperBargains(query, orderBy).subscribe(function (response) {
             if (!response.length)
-                _this.dialog.open(__WEBPACK_IMPORTED_MODULE_5_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
+                _this.dialog.open(__WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
             else
                 _this.books = response;
         });

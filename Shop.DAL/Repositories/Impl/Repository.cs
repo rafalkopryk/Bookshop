@@ -17,12 +17,19 @@ namespace Shop.DAL.Repositories.Impl
             _db = shopDbContext;
         }
 
-        public IEnumerable<TEntity> Find([Optional] Expression<Func<TEntity, bool>> expressionQuery, [Optional] Expression<Func<TEntity, object>> expressionSort, [Optional] int sortType)
-        {
-            if(expressionQuery!=null && expressionSort!=null)
-                return sortType.Equals(2) ? _db.Set<TEntity>().Where(expressionQuery).OrderByDescending(expressionSort) : _db.Set<TEntity>().Where(expressionQuery).OrderBy(expressionSort);
-            else
-                return _db.Set<TEntity>();
+        public virtual IEnumerable<TEntity> Find(
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Expression<Func<TEntity, bool>> filter = null          
+        ){
+            IQueryable<TEntity> query = _db.Set<TEntity>().AsQueryable();
+
+            if (filter != null)
+                query = query.Where(filter);
+
+            if (orderBy != null)
+                query = orderBy(query);
+
+            return query.ToList();
         }
     }
 }

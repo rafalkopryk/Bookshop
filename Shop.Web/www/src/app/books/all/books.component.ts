@@ -22,8 +22,8 @@ export class BooksComponent implements OnInit, OnDestroy {
        
 
     query: string;
-    currentSortBy: string | undefined;
-    currentSortType = DatatableSortType.Ascending;
+    currentSortBy: string;
+    currentSortType : DatatableSortType;
     books: Book[] = [];
     subscription: Subscription;
 
@@ -37,6 +37,9 @@ export class BooksComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
+        this.currentSortBy = "title";
+        this.currentSortType = DatatableSortType.Ascending;
+
         this.getBooks(this.currentSortBy, this.currentSortType,this.query);
     
         this.subscription = this.searchService.query$.subscribe(
@@ -55,10 +58,14 @@ export class BooksComponent implements OnInit, OnDestroy {
     }
 
 
-    protected getBooks(sortBy: string | undefined = this.currentSortBy, sortType: DatatableSortType = this.currentSortType, query?: string) {
+    protected getBooks(sortBy: string = this.currentSortBy, sortType: DatatableSortType = this.currentSortType, query?: string) {
         this.currentSortBy = sortBy;
         this.currentSortType = sortType;
-        this.booksService.getBooks(query,sortBy,sortType).subscribe(
+
+        let orderBy = this.currentSortType == DatatableSortType.Descending ? this.currentSortBy+"_desc" : this.currentSortBy;
+        console.log(orderBy);
+
+        this.booksService.getBooks(query,orderBy).subscribe(
             response =>{
                 if (!response.length)
                     this.dialog.open(NoResultsAlertComponent, { role: "alertdialog", width: "300px"});

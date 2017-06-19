@@ -16,14 +16,14 @@ namespace Shop.BLL.Services.Impl
     {
         private IBookRepository _bookRepository;
         private Expression<Func<Book, bool>> _expressionQuery;
-        private Expression<Func<Book, object>> _expressionSort;
 
         public BookService(IBookRepository bookRepository)
         {
             _bookRepository = bookRepository;
         }
 
-        public IEnumerable<BookDTO> GetAllByCriteria(string query, string sortBy, int sortType)
+
+        public IEnumerable<BookDTO> GetAllByCriteria(string query, string orderBy)
         {
             _expressionQuery = obj =>
                (obj.Title.Contains(query)
@@ -31,13 +31,10 @@ namespace Shop.BLL.Services.Impl
                || (obj.Author.LastName + " " + obj.Author.FirstName).Contains(query)
                || query == null);
 
-            SetExpressionSort(sortBy);
-
-            SetExpressionSort(sortBy);
-            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(_expressionQuery, _expressionSort, sortType));
+            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy(orderBy), _expressionQuery));
         }
 
-        public IEnumerable<BookDTO> GetAudiobooksByCriteria(string query, string sortBy, int sortType)
+        public IEnumerable<BookDTO> GetAudiobooksByCriteria(string query, string orderBy)
         {
             _expressionQuery = obj =>
                 (obj.Title.Contains(query)
@@ -46,11 +43,10 @@ namespace Shop.BLL.Services.Impl
                 || query == null)
                 && obj.Type == TypeOfBook.Audiobook;
 
-            SetExpressionSort(sortBy);
-            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(_expressionQuery, _expressionSort, sortType));
+            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy(orderBy), _expressionQuery));
         }
 
-        public IEnumerable<BookDTO> GetEbooksByCriteria(string query, string sortBy, int sortType)
+        public IEnumerable<BookDTO> GetEbooksByCriteria(string query, string orderBy)
         {
             _expressionQuery = obj =>
                (obj.Title.Contains(query)
@@ -59,11 +55,10 @@ namespace Shop.BLL.Services.Impl
                || query == null)
                && obj.Type == TypeOfBook.EBook;
 
-            SetExpressionSort(sortBy);
-            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(_expressionQuery, _expressionSort, sortType));
+            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy(orderBy), _expressionQuery));
         }
 
-        public IEnumerable<BookDTO> GetNoveltiesByCriteria(string query, string sortBy, int sortType)
+        public IEnumerable<BookDTO> GetNoveltiesByCriteria(string query, string orderBy)
         {
             _expressionQuery = obj =>
                (obj.Title.Contains(query)
@@ -72,11 +67,10 @@ namespace Shop.BLL.Services.Impl
                || query == null)
                && (obj.ReleaseDate > DbFunctions.AddDays(DateTime.Now, -14) && obj.ReleaseDate < DateTime.Now);
 
-            SetExpressionSort(sortBy);
-            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(_expressionQuery, _expressionSort, sortType));
+            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy(orderBy), _expressionQuery));
         }
 
-        public IEnumerable<BookDTO> GetPreviewsByCriteria(string query, string sortBy, int sortType)
+        public IEnumerable<BookDTO> GetPreviewsByCriteria(string query, string orderBy)
         {
             
             _expressionQuery = obj =>
@@ -86,11 +80,10 @@ namespace Shop.BLL.Services.Impl
                || query == null)
                && (obj.ReleaseDate < DbFunctions.AddDays(DateTime.Now,14) && obj.ReleaseDate > DateTime.Now);
 
-            SetExpressionSort(sortBy);
-            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(_expressionQuery, _expressionSort, sortType));
+            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy(orderBy), _expressionQuery));
         }
 
-        public IEnumerable<BookDTO> GetSuperBargainsByCriteria(string query, string sortBy, int sortType)
+        public IEnumerable<BookDTO> GetSuperBargainsByCriteria(string query, string orderBy)
         {
             _expressionQuery = obj =>
                (obj.Title.Contains(query)
@@ -99,30 +92,64 @@ namespace Shop.BLL.Services.Impl
                || query == null)
                && (obj.SuperBargain == true);
 
-            SetExpressionSort(sortBy);
-            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(_expressionQuery, _expressionSort, sortType));
+            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy(orderBy), _expressionQuery));
         }
 
 
-        private void SetExpressionSort(string sortBy)
+        //Etap V
+
+        public IEnumerable<BookDTO> GetAll()
         {
-            switch (sortBy)
+            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy("title")));
+        }
+
+
+        public IEnumerable<BookDTO> GetByPublisher(string publisher)
+        {
+            _expressionQuery = obj => obj.Publisher.Name.ToLower() == publisher.ToLower();
+            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy("title"), _expressionQuery));
+        }
+
+        public IEnumerable<BookDTO> GetByTitle(string title)
+        {
+            _expressionQuery = obj => obj.Title.Contains(title);
+            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy("title"), _expressionQuery));
+        }
+
+
+        public IEnumerable<BookDTO> GetByType(string type)
+        {
+            if (!type.ToLower().Equals("audiobook") && !type.ToLower().Equals("e-book"))
+                return new List<BookDTO>();
+
+            _expressionQuery = obj => obj.Type == (type.ToLower() == "audiobook" ? TypeOfBook.Audiobook : TypeOfBook.EBook);
+            return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy("title"), _expressionQuery));
+        }
+
+        private Func<IQueryable<Book>, IOrderedQueryable<Book>> OrderBy(string orderBy)
+        {
+            switch (orderBy)
             {
-                case "ReleaseDate":
-                    _expressionSort = obj => obj.ReleaseDate.ToString();
-                    break;
-                case "Price":
-                    _expressionSort = obj => obj.Price.ToString();
-                    break;
-                case "Author":
-                    _expressionSort = obj => obj.Author.LastName;
-                    break;
-                case "Publisher":
-                    _expressionSort = obj => obj.Publisher.Name;
-                    break;
+                case "releaseDate":
+                    return books => books.OrderBy(book => book.ReleaseDate);
+                case "releaseDate_desc":
+                    return books => books.OrderByDescending(book => book.ReleaseDate);
+                case "price":
+                    return books => books.OrderBy(book => book.Price);
+                case "price_desc":
+                    return books => books.OrderByDescending(book => book.Price);
+                case "author":
+                    return books => books.OrderBy(book => book.Author.LastName);
+                case "author_desc":
+                    return books => books.OrderByDescending(book => book.Author.LastName);
+                case "publisher":
+                    return books => books.OrderBy(book => book.Publisher.Name);
+                case "publisher_desc":
+                    return books => books.OrderByDescending(book => book.Publisher.Name);
+                case "title_desc":
+                    return books => books.OrderByDescending(book => book.Title);
                 default:
-                    _expressionSort = obj => obj.Title;
-                    break;
+                    return books => books.OrderBy(book => book.Title);
             }
         }
     }
