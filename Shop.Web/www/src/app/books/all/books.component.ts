@@ -21,20 +21,19 @@ import { Subscription } from "rxjs/Subscription";
 export class BooksComponent implements OnInit, OnDestroy {
        
 
-
     query: string;
     currentSortBy: string | undefined;
     currentSortType = DatatableSortType.Ascending;
-    books: Array<Book> = [];
+    books: Book[] = [];
     subscription: Subscription;
 
     @ViewChild(MdDataTableComponent)
-    private dataTable: MdDataTableComponent;
+    protected dataTable: MdDataTableComponent;
 
     constructor(
-        private booksService: BooksService,
+        protected booksService: BooksService,
         public dialog: MdDialog,
-        private searchService: SearchService
+        protected searchService: SearchService
     ) { }
 
     ngOnInit() {
@@ -56,14 +55,17 @@ export class BooksComponent implements OnInit, OnDestroy {
     }
 
 
-    private getBooks(sortBy: string | undefined = this.currentSortBy, sortType: DatatableSortType = this.currentSortType, query?: string) {
+    protected getBooks(sortBy: string | undefined = this.currentSortBy, sortType: DatatableSortType = this.currentSortType, query?: string) {
         this.currentSortBy = sortBy;
         this.currentSortType = sortType;
-        let books = this.booksService.findBooks(query);
-        if (!books.length)
-            this.dialog.open(NoResultsAlertComponent, { role: "alertdialog", width: "300px"});
-        else
-           this.books = books;
+        this.booksService.getBooks(query,sortBy,sortType).subscribe(
+            response =>{
+                if (!response.length)
+                    this.dialog.open(NoResultsAlertComponent, { role: "alertdialog", width: "300px"});
+                else
+                    this.books = response;
+            }
+        );
     }
 
     openDialog(book:Book) {

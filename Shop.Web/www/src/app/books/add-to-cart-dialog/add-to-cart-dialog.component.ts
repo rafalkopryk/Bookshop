@@ -17,7 +17,7 @@ import { BasketService } from "app/shared/basket.service";
 export class AddToCartDialogComponent implements OnInit {
         
     basketItem: BasketItem;
-    carriers: Array<Carrier> = [];
+    carriers: Carrier[] =[];
     form: FormGroup;
     test: string;
     
@@ -32,27 +32,15 @@ export class AddToCartDialogComponent implements OnInit {
     ngOnInit(): void {
         this.dialogRef.updateSize("500px");
         this.dialogRef.updatePosition();
-        this.carriers = this.carriersService.getAllCarriers();
+        this.carriersService.getCarriers().subscribe(
+            response => 
+                this.carriers = response
+        );
+        
         this.basketItem = new BasketItem(this.data, 1,null);
         this.buildForm();
    
     }
-
-
-    //@HostListener('window:resize', ['$event'])
-    //onResize(event) {
-
-    //    let x = event.target.innerWidth;
-
-    //    if (event.target.innerWidth < 600) {
-    //        this.dialogRef.updateSize(x+'px', 'auto');
-    //    }
-    //    else {
-    //        this.dialogRef.updateSize('550px', "auto");
-    //        this.dialogRef.updatePosition();
-    //    }     
-    //}
-
 
     addToCart() {
         this.basketService.addItem(this.basketItem);

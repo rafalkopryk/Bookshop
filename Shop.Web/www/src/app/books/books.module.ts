@@ -22,8 +22,7 @@ import { PreviewsComponent } from './previews/previews.component';
 import { SuperBargainsComponent } from './super-bargains/super-bargains.component';
 import { AudiobooksComponent } from "app/books/audiobooks/audiobooks.component";
 import { EbooksComponent } from "app/books/ebooks/ebooks.component";
-
-
+import { HttpModule }    from '@angular/http';
 
 
 @NgModule({
@@ -35,7 +34,8 @@ import { EbooksComponent } from "app/books/ebooks/ebooks.component";
         BooksRoutingModule,
         MdDataTableModule,
         FlexLayoutModule,
-        BrowserAnimationsModule,     
+        BrowserAnimationsModule, 
+        HttpModule    
     ],
     declarations: [BooksComponent, AudiobooksComponent, EbooksComponent, AddToCartDialogComponent, NoResultsAlertComponent, NoveltiesComponent, PreviewsComponent, SuperBargainsComponent],
     providers: [BooksService, CarriersService],

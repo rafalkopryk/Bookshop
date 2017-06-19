@@ -1,15 +1,17 @@
 ﻿import { Injectable } from '@angular/core';
 import { Carrier } from "./carrier";
+import { Http} from "@angular/http";
+import { Observable } from 'rxjs/Rx';
+import { Subscription } from "rxjs/Subscription";
 
 @Injectable()
 export class CarriersService {
-    constructor() { }
+    
+    private resourceUrl  = 'http://localhost:63714/api/carriers';
+    constructor(private http: Http) {}
 
-    getAllCarriers(): Array<Carrier> {
-        return [
-                new Carrier(1, "PenDrive"),
-                new Carrier(2, "płyta CD"),
-                new Carrier(3,"płyta DVD")
-        ] 
+    getCarriers(): Observable<Carrier[]> {
+        return this.http.get(this.resourceUrl)
+            .map(response => <Carrier[]>response.json());
     }
 }
