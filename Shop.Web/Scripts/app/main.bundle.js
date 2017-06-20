@@ -50,7 +50,7 @@ AppRoutingModule = __decorate([
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"app flex-container\" fxLayout=\"column\" fxLayoutAlign=\"start stretch\">\r\n  <app-header></app-header>\r\n  <md-sidenav-container fxFlex>\r\n    <md-sidenav mode=\"hover\" align=\"end\" class=\"mat-elevation-z6\" opened=\"false\" #sidenav>\r\n      <app-basket></app-basket>\r\n    </md-sidenav>\r\n    \r\n    \r\n    <div class=\"container\">\r\n      \r\n      <md-card>\r\n        <app-navbar></app-navbar>\r\n        <router-outlet></router-outlet>\r\n      </md-card>\r\n    </div>\r\n  </md-sidenav-container>\r\n\r\n</section>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+module.exports = "<section class=\"app flex-container\" fxLayout=\"column\" fxLayoutAlign=\"start stretch\">\r\n  <app-progress></app-progress>\r\n  <app-header></app-header>\r\n  <md-sidenav-container fxFlex>\r\n    <md-sidenav mode=\"hover\" align=\"end\" class=\"mat-elevation-z6\" opened=\"false\" #sidenav>\r\n      <app-basket></app-basket>\r\n    </md-sidenav>\r\n    <div class=\"container\">\r\n      <md-card>\r\n        <app-navbar></app-navbar>\r\n        <router-outlet></router-outlet>\r\n      </md-card>\r\n    </div>\r\n  </md-sidenav-container>\r\n\r\n</section>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -106,7 +106,7 @@ __decorate([
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["k" /* MdSidenav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["k" /* MdSidenav */]) === "function" && _a || Object)
 ], AppComponent.prototype, "sidenav", void 0);
 AppComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-root',
         template: __webpack_require__("./src/app/app.component.html"),
         styles: [__webpack_require__("./src/app/app.component.scss")]
@@ -260,7 +260,7 @@ var BasketComponent = (function () {
     return BasketComponent;
 }());
 BasketComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-basket',
         template: __webpack_require__("./src/app/basket/basket.component.html"),
         styles: [__webpack_require__("./src/app/basket/basket.component.scss")]
@@ -414,12 +414,12 @@ var AddToCartDialogComponent = (function () {
     return AddToCartDialogComponent;
 }());
 AddToCartDialogComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-add-to-cart-dialog',
         template: __webpack_require__("./src/app/books/add-to-cart-dialog/add-to-cart-dialog.component.html"),
         styles: [__webpack_require__("./src/app/books/add-to-cart-dialog/add-to-cart-dialog.component.scss")]
     }),
-    __param(2, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["h" /* Inject */])(__WEBPACK_IMPORTED_MODULE_1__angular_material__["h" /* MD_DIALOG_DATA */])),
+    __param(2, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["i" /* Inject */])(__WEBPACK_IMPORTED_MODULE_1__angular_material__["h" /* MD_DIALOG_DATA */])),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["i" /* MdDialogRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["i" /* MdDialogRef */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_books_carriers_service__["a" /* CarriersService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_books_carriers_service__["a" /* CarriersService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5_app_books_book__["a" /* Book */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_books_book__["a" /* Book */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["i" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["i" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6_app_shared_basket_service__["a" /* BasketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_app_shared_basket_service__["a" /* BasketService */]) === "function" && _e || Object])
 ], AddToCartDialogComponent);
 
@@ -487,18 +487,14 @@ var BooksComponent = (function () {
         var _this = this;
         if (sortBy === void 0) { sortBy = this.currentSortBy; }
         if (sortType === void 0) { sortType = this.currentSortType; }
-        var books = this.books;
-        this.books = [];
         this.currentSortBy = sortBy;
         this.currentSortType = sortType;
         var orderBy = this.currentSortType == __WEBPACK_IMPORTED_MODULE_3_ng2_md_datatable__["b" /* DatatableSortType */].Descending ? this.currentSortBy + "_desc" : this.currentSortBy;
         this.booksService.getBooks(query, orderBy).subscribe(function (response) {
-            if (!response.length) {
+            if (!response.length)
                 _this.dialog.open(__WEBPACK_IMPORTED_MODULE_8_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
-                _this.books = books;
-            }
             else
-                setTimeout(function () { _this.books = response; }, 500);
+                setTimeout(function () { _this.books = response; }, 300);
         });
     };
     BooksComponent.prototype.openDialog = function (book) {
@@ -511,7 +507,7 @@ __decorate([
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ng2_md_datatable__["c" /* MdDataTableComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ng2_md_datatable__["c" /* MdDataTableComponent */]) === "function" && _a || Object)
 ], BooksComponent.prototype, "dataTable", void 0);
 BooksComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-books',
         template: __webpack_require__("./src/app/books/books.component.html"),
         styles: [__webpack_require__("./src/app/books/books.component.scss")]
@@ -585,13 +581,13 @@ var AudiobooksComponent = (function (_super) {
             if (!response.length)
                 _this.dialog.open(__WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
             else
-                setTimeout(function () { _this.books = response; }, 500);
+                setTimeout(function () { _this.books = response; }, 300);
         });
     };
     return AudiobooksComponent;
 }(__WEBPACK_IMPORTED_MODULE_7__all_books_component__["a" /* BooksComponent */]));
 AudiobooksComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-audiobooks',
         template: __webpack_require__("./src/app/books/books.component.html"),
         styles: [__webpack_require__("./src/app/books/books.component.scss")]
@@ -785,6 +781,7 @@ BooksModule = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_shared_progress_progress_service__ = __webpack_require__("./src/app/shared/progress/progress.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BooksService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -797,41 +794,73 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var BooksService = (function () {
-    function BooksService(http) {
+    function BooksService(http, progressService) {
         this.http = http;
+        this.progressService = progressService;
         this.resourceUrl = '/api/books';
         this.requestOptions = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]();
     }
     BooksService.prototype.getBooks = function (query, orderBy) {
+        var _this = this;
         this.setRequestParametrs(query, orderBy);
+        this.showProgress();
         return this.http.get(this.resourceUrl + "/all", this.requestOptions)
-            .map(this.extractData);
+            .map(this.extractData)
+            .finally(function () {
+            _this.hideProgress();
+        });
     };
     BooksService.prototype.getEbooks = function (query, orderBy) {
+        var _this = this;
         this.setRequestParametrs(query, orderBy);
+        this.showProgress();
         return this.http.get(this.resourceUrl + "/ebooks", this.requestOptions)
-            .map(this.extractData);
+            .map(this.extractData)
+            .finally(function () {
+            _this.hideProgress();
+        });
     };
     BooksService.prototype.getAudiobooks = function (query, orderBy) {
+        var _this = this;
         this.setRequestParametrs(query, orderBy);
+        this.showProgress();
         return this.http.get(this.resourceUrl + "/audiobooks", this.requestOptions)
-            .map(this.extractData);
+            .map(this.extractData)
+            .finally(function () {
+            _this.hideProgress();
+        });
     };
     BooksService.prototype.getNovelties = function (query, orderBy) {
+        var _this = this;
         this.setRequestParametrs(query, orderBy);
+        this.showProgress();
         return this.http.get(this.resourceUrl + "/novelties", this.requestOptions)
-            .map(this.extractData);
+            .map(this.extractData)
+            .finally(function () {
+            _this.hideProgress();
+        });
     };
     BooksService.prototype.getPreviews = function (query, orderBy) {
+        var _this = this;
         this.setRequestParametrs(query, orderBy);
+        this.showProgress();
         return this.http.get(this.resourceUrl + "/previews", this.requestOptions)
-            .map(this.extractData);
+            .map(this.extractData)
+            .finally(function () {
+            _this.hideProgress();
+        });
     };
     BooksService.prototype.getSuperBargains = function (query, orderBy) {
+        var _this = this;
         this.setRequestParametrs(query, orderBy);
+        this.showProgress();
         return this.http.get(this.resourceUrl + "/super-bargains", this.requestOptions)
-            .map(this.extractData);
+            .map(this.extractData)
+            .finally(function () {
+            _this.hideProgress();
+        });
     };
     BooksService.prototype.extractData = function (res) {
         return res.json();
@@ -842,14 +871,20 @@ var BooksService = (function () {
         params.set('orderBy', orderBy);
         this.requestOptions.params = params;
     };
+    BooksService.prototype.showProgress = function () {
+        this.progressService.show();
+    };
+    BooksService.prototype.hideProgress = function () {
+        this.progressService.hide();
+    };
     return BooksService;
 }());
 BooksService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_shared_progress_progress_service__["a" /* ProgressService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_shared_progress_progress_service__["a" /* ProgressService */]) === "function" && _b || Object])
 ], BooksService);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=books.service.js.map
 
 /***/ }),
@@ -951,13 +986,13 @@ var EbooksComponent = (function (_super) {
             if (!response.length)
                 _this.dialog.open(__WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
             else
-                setTimeout(function () { _this.books = response; }, 500);
+                setTimeout(function () { _this.books = response; }, 400);
         });
     };
     return EbooksComponent;
 }(__WEBPACK_IMPORTED_MODULE_1_app_books_all_books_component__["a" /* BooksComponent */]));
 EbooksComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-ebooks',
         template: __webpack_require__("./src/app/books/books.component.html"),
         styles: [__webpack_require__("./src/app/books/books.component.scss")]
@@ -1019,7 +1054,7 @@ var NoResultsAlertComponent = (function () {
     return NoResultsAlertComponent;
 }());
 NoResultsAlertComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-no-results-alert',
         template: __webpack_require__("./src/app/books/no-results-alert/no-results-alert.component.html"),
         styles: [__webpack_require__("./src/app/books/no-results-alert/no-results-alert.component.scss")]
@@ -1089,13 +1124,13 @@ var NoveltiesComponent = (function (_super) {
             if (!response.length)
                 _this.dialog.open(__WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
             else
-                setTimeout(function () { _this.books = response; }, 500);
+                setTimeout(function () { _this.books = response; }, 400);
         });
     };
     return NoveltiesComponent;
 }(__WEBPACK_IMPORTED_MODULE_1_app_books_all_books_component__["a" /* BooksComponent */]));
 NoveltiesComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-novelties',
         template: __webpack_require__("./src/app/books/books.component.html"),
         styles: [__webpack_require__("./src/app/books/books.component.scss")]
@@ -1157,7 +1192,7 @@ var PreloaderComponent = (function () {
     return PreloaderComponent;
 }());
 PreloaderComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'preloader',
         template: __webpack_require__("./src/app/books/preloader/preloader.component.html"),
         styles: [__webpack_require__("./src/app/books/preloader/preloader.component.scss")]
@@ -1227,13 +1262,13 @@ var PreviewsComponent = (function (_super) {
             if (!response.length)
                 _this.dialog.open(__WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
             else
-                setTimeout(function () { _this.books = response; }, 500);
+                setTimeout(function () { _this.books = response; }, 400);
         });
     };
     return PreviewsComponent;
 }(__WEBPACK_IMPORTED_MODULE_1_app_books_all_books_component__["a" /* BooksComponent */]));
 PreviewsComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-previews',
         template: __webpack_require__("./src/app/books/books.component.html"),
         styles: [__webpack_require__("./src/app/books/books.component.scss")]
@@ -1304,13 +1339,13 @@ var SuperBargainsComponent = (function (_super) {
             if (!response.length)
                 _this.dialog.open(__WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
             else
-                setTimeout(function () { _this.books = response; }, 200);
+                setTimeout(function () { _this.books = response; }, 400);
         });
     };
     return SuperBargainsComponent;
 }(__WEBPACK_IMPORTED_MODULE_1_app_books_all_books_component__["a" /* BooksComponent */]));
 SuperBargainsComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-super-bargains',
         template: __webpack_require__("./src/app/books/books.component.html"),
         styles: [__webpack_require__("./src/app/books/books.component.scss")]
@@ -1390,7 +1425,7 @@ var HeaderComponent = (function () {
     return HeaderComponent;
 }());
 HeaderComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-header',
         template: __webpack_require__("./src/app/header/header.component.html"),
         styles: [__webpack_require__("./src/app/header/header.component.scss")]
@@ -1511,7 +1546,7 @@ var SearchEngineComponent = (function () {
     return SearchEngineComponent;
 }());
 SearchEngineComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-search-engine',
         template: __webpack_require__("./src/app/header/search-engine/search-engine.component.html"),
         styles: [__webpack_require__("./src/app/header/search-engine/search-engine.component.scss")]
@@ -1595,7 +1630,7 @@ __decorate([
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_material__["j" /* MdTabGroup */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_material__["j" /* MdTabGroup */]) === "function" && _a || Object)
 ], NavbarComponent.prototype, "nav", void 0);
 NavbarComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-navbar',
         template: __webpack_require__("./src/app/navbar/navbar.component.html"),
         styles: [__webpack_require__("./src/app/navbar/navbar.component.scss")]
@@ -1690,14 +1725,91 @@ BasketService = __decorate([
 
 /***/ }),
 
-/***/ "./src/app/shared/preloader.service.ts":
+/***/ "./src/app/shared/progress/progress.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div [class.loader-hidden]=\"!show\">\n    <div class=\"loader-overlay\">\n            <div>\n                <md-progress-bar mode=\"indeterminate\" color=\"warn\"></md-progress-bar>\n            </div>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/shared/progress/progress.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".loader-hidden {\n  visibility: hidden; }\n\n.loader-overlay {\n  position: absolute;\n  width: 100%;\n  top: 0;\n  left: 0;\n  opacity: 1;\n  z-index: 500000; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "./src/app/shared/progress/progress.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__progress_service__ = __webpack_require__("./src/app/shared/progress/progress.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProgressComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ProgressComponent = (function () {
+    function ProgressComponent(progressService) {
+        this.progressService = progressService;
+    }
+    ProgressComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.show = false;
+        this.subscription = this.progressService.progressStatus
+            .subscribe(function (result) {
+            if (result == false)
+                setTimeout(function () { _this.show = result; }, 300);
+            else
+                _this.show = result;
+        });
+    };
+    ProgressComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
+    return ProgressComponent;
+}());
+ProgressComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
+        selector: 'app-progress',
+        template: __webpack_require__("./src/app/shared/progress/progress.component.html"),
+        styles: [__webpack_require__("./src/app/shared/progress/progress.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__progress_service__["a" /* ProgressService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__progress_service__["a" /* ProgressService */]) === "function" && _a || Object])
+], ProgressComponent);
+
+var _a;
+//# sourceMappingURL=progress.component.js.map
+
+/***/ }),
+
+/***/ "./src/app/shared/progress/progress.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__ = __webpack_require__("./node_modules/rxjs/BehaviorSubject.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PreloaderService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProgressService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1706,20 +1818,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 
 
-var PreloaderService = (function () {
-    function PreloaderService() {
-        this.loaderStatus = new __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__["BehaviorSubject"](false);
+var ProgressService = (function () {
+    function ProgressService() {
+        this.progressStatus = new __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__["BehaviorSubject"](false);
     }
-    PreloaderService.prototype.displayLoader = function (value) {
-        this.loaderStatus.next(value);
+    ProgressService.prototype.show = function () {
+        this.progressStatus.next(true);
     };
-    return PreloaderService;
+    ProgressService.prototype.hide = function () {
+        this.progressStatus.next(false);
+    };
+    return ProgressService;
 }());
-PreloaderService = __decorate([
+ProgressService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])()
-], PreloaderService);
+], ProgressService);
 
-//# sourceMappingURL=preloader.service.js.map
+//# sourceMappingURL=progress.service.js.map
 
 /***/ }),
 
@@ -1765,7 +1880,9 @@ SearchService = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_shared_basket_service__ = __webpack_require__("./src/app/shared/basket.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_shared_sidenav_service__ = __webpack_require__("./src/app/shared/sidenav.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_shared_search_service__ = __webpack_require__("./src/app/shared/search.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_shared_preloader_service__ = __webpack_require__("./src/app/shared/preloader.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_shared_progress_progress_service__ = __webpack_require__("./src/app/shared/progress/progress.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__progress_progress_component__ = __webpack_require__("./src/app/shared/progress/progress.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_material__ = __webpack_require__("./node_modules/@angular/material/@angular/material.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SharedModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1778,6 +1895,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 var SharedModule = (function () {
     function SharedModule() {
     }
@@ -1785,9 +1904,12 @@ var SharedModule = (function () {
 }());
 SharedModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* NgModule */])({
-        imports: [],
-        declarations: [],
-        providers: [__WEBPACK_IMPORTED_MODULE_1_app_shared_basket_service__["a" /* BasketService */], __WEBPACK_IMPORTED_MODULE_2_app_shared_sidenav_service__["a" /* SidenavService */], __WEBPACK_IMPORTED_MODULE_3_app_shared_search_service__["a" /* SearchService */], __WEBPACK_IMPORTED_MODULE_4_app_shared_preloader_service__["a" /* PreloaderService */]],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_6__angular_material__["a" /* MaterialModule */]
+        ],
+        declarations: [__WEBPACK_IMPORTED_MODULE_5__progress_progress_component__["a" /* ProgressComponent */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_1_app_shared_basket_service__["a" /* BasketService */], __WEBPACK_IMPORTED_MODULE_2_app_shared_sidenav_service__["a" /* SidenavService */], __WEBPACK_IMPORTED_MODULE_3_app_shared_search_service__["a" /* SearchService */], __WEBPACK_IMPORTED_MODULE_4_app_shared_progress_progress_service__["a" /* ProgressService */]],
+        exports: [__WEBPACK_IMPORTED_MODULE_5__progress_progress_component__["a" /* ProgressComponent */]]
     })
 ], SharedModule);
 

@@ -2,13 +2,17 @@
 import { BasketService } from "app/shared/basket.service";
 import { SidenavService } from "app/shared/sidenav.service";
 import { SearchService } from "app/shared/search.service";
-import { PreloaderService } from "app/shared/preloader.service";
+import { ProgressService } from "app/shared/progress/progress.service";
+import { ProgressComponent } from './progress/progress.component';
+import { MaterialModule } from '@angular/material';
 
 @NgModule({
   imports: [
+    MaterialModule
   ],
-  declarations: [],
-  providers: [BasketService,SidenavService,SearchService,PreloaderService],
+  declarations: [ProgressComponent],
+  providers: [BasketService,SidenavService,SearchService,ProgressService],
+  exports: [ProgressComponent]
 
 })
 export class SharedModule { }

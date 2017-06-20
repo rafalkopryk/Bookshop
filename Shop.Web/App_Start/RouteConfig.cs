@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shop.Web.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,7 +17,21 @@ namespace Shop.Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                constraints: new
+                {
+                    serverRooute = new ServerRouteConstraint(url =>
+                    {
+                        return url.PathAndQuery.StartsWith("/swagger",
+                            StringComparison.InvariantCultureIgnoreCase);
+                    })
+                }
+            );
+
+            routes.MapRoute(
+               name: "angular",
+               url: "{*url}",
+               defaults: new { controller = "Home", action = "Index" }
             );
         }
     }

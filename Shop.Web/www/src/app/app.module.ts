@@ -11,6 +11,7 @@ import { MaterialModule } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BasketModule } from "app/basket/basket.module";
 
+
 @NgModule({
   declarations: [
       AppComponent

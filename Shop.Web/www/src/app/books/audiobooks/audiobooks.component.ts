@@ -25,11 +25,11 @@ export class AudiobooksComponent extends BooksComponent  {
         let orderBy = this.currentSortType == DatatableSortType.Descending ? this.currentSortBy+"_desc" : this.currentSortBy;
 
         this.booksService.getAudiobooks(query,orderBy).subscribe(
-            response =>{
+           response =>{
                 if (!response.length)
                     this.dialog.open(NoResultsAlertComponent, { role: "alertdialog", width: "300px"});
                 else
-                    setTimeout(()=>{ this.books = response}, 500);
+                    setTimeout(()=>{ this.books = response}, 300);
             }
         );
     }

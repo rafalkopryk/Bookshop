@@ -28,7 +28,7 @@ export class SuperBargainsComponent extends BooksComponent implements OnInit {
                 if (!response.length)
                     this.dialog.open(NoResultsAlertComponent, { role: "alertdialog", width: "300px"});
                 else
-                    setTimeout(()=>{ this.books = response}, 200);
+                    setTimeout(()=>{ this.books = response}, 400);
             }
         );
     }
