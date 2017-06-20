@@ -800,7 +800,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var BooksService = (function () {
     function BooksService(http) {
         this.http = http;
-        this.resourceUrl = 'http://localhost:63714/api/books';
+        this.resourceUrl = '/api/books';
         this.requestOptions = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]();
     }
     BooksService.prototype.getBooks = function (query, orderBy) {
