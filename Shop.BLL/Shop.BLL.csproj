@@ -68,6 +68,7 @@
     <Compile Include="BLLModule.cs" />
     <Compile Include="DTOs\BookDTO.cs" />
     <Compile Include="DTOs\CarrierDTO.cs" />
+    <Compile Include="Extensions\PrecateBuilder.cs" />
     <Compile Include="MapperConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IBookService.cs" />

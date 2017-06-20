@@ -12,7 +12,7 @@ using System.Data.Entity;
 
 namespace Shop.BLL.Services.Impl
 {
-    class BookService : IBookService
+    public class BookService : IBookService
     {
         private IBookRepository _bookRepository;
         private Expression<Func<Book, bool>> _expressionQuery;
@@ -25,73 +25,37 @@ namespace Shop.BLL.Services.Impl
 
         public IEnumerable<BookDTO> GetAllByCriteria(string query, string orderBy)
         {
-            _expressionQuery = obj =>
-               (obj.Title.Contains(query)
-               || (obj.Author.FirstName+ " " +obj.Author.LastName).Contains(query)
-               || (obj.Author.LastName + " " + obj.Author.FirstName).Contains(query)
-               || query == null);
-
+            _expressionQuery = QueryToTitleAndAuthor(query);
             return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy(orderBy), _expressionQuery));
         }
 
         public IEnumerable<BookDTO> GetAudiobooksByCriteria(string query, string orderBy)
         {
-            _expressionQuery = obj =>
-                (obj.Title.Contains(query)
-                || (obj.Author.FirstName + " " + obj.Author.LastName).Contains(query)
-                || (obj.Author.LastName + " " + obj.Author.FirstName).Contains(query)
-                || query == null)
-                && obj.Type == TypeOfBook.Audiobook;
-
+            _expressionQuery = Extensions.PredicateBuilder.And(QueryToTitleAndAuthor(query), book => book.Type == TypeOfBook.Audiobook);
             return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy(orderBy), _expressionQuery));
         }
 
         public IEnumerable<BookDTO> GetEbooksByCriteria(string query, string orderBy)
         {
-            _expressionQuery = obj =>
-               (obj.Title.Contains(query)
-               || (obj.Author.FirstName + " " + obj.Author.LastName).Contains(query)
-               || (obj.Author.LastName + " " + obj.Author.FirstName).Contains(query)
-               || query == null)
-               && obj.Type == TypeOfBook.EBook;
-
+            _expressionQuery = Extensions.PredicateBuilder.And(QueryToTitleAndAuthor(query), book => book.Type == TypeOfBook.EBook);
             return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy(orderBy), _expressionQuery));
         }
 
         public IEnumerable<BookDTO> GetNoveltiesByCriteria(string query, string orderBy)
         {
-            _expressionQuery = obj =>
-               (obj.Title.Contains(query)
-               || (obj.Author.FirstName + " " + obj.Author.LastName).Contains(query)
-               || (obj.Author.LastName + " " + obj.Author.FirstName).Contains(query)
-               || query == null)
-               && (obj.ReleaseDate > DbFunctions.AddDays(DateTime.Now, -14) && obj.ReleaseDate < DateTime.Now);
-
+            _expressionQuery = Extensions.PredicateBuilder.And(QueryToTitleAndAuthor(query), book => book.ReleaseDate > DbFunctions.AddDays(DateTime.Now, -14) && book.ReleaseDate < DateTime.Now);
             return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy(orderBy), _expressionQuery));
         }
 
         public IEnumerable<BookDTO> GetPreviewsByCriteria(string query, string orderBy)
         {
-            
-            _expressionQuery = obj =>
-               (obj.Title.Contains(query)
-               || (obj.Author.FirstName + " " + obj.Author.LastName).Contains(query)
-               || (obj.Author.LastName + " " + obj.Author.FirstName).Contains(query)
-               || query == null)
-               && (obj.ReleaseDate < DbFunctions.AddDays(DateTime.Now,14) && obj.ReleaseDate > DateTime.Now);
-
+            _expressionQuery = Extensions.PredicateBuilder.And(QueryToTitleAndAuthor(query), book => book.ReleaseDate < DbFunctions.AddDays(DateTime.Now, 14) && book.ReleaseDate > DateTime.Now);
             return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy(orderBy), _expressionQuery));
         }
 
         public IEnumerable<BookDTO> GetSuperBargainsByCriteria(string query, string orderBy)
         {
-            _expressionQuery = obj =>
-               (obj.Title.Contains(query)
-               || (obj.Author.FirstName + " " + obj.Author.LastName).Contains(query)
-               || (obj.Author.LastName + " " + obj.Author.FirstName).Contains(query)
-               || query == null)
-               && (obj.SuperBargain == true);
-
+            _expressionQuery = Extensions.PredicateBuilder.And(QueryToTitleAndAuthor(query), book => book.SuperBargain == true);
             return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy(orderBy), _expressionQuery));
         }
 
@@ -112,7 +76,7 @@ namespace Shop.BLL.Services.Impl
 
         public IEnumerable<BookDTO> GetByTitle(string title)
         {
-            _expressionQuery = obj => obj.Title.Contains(title);
+            _expressionQuery = obj => obj.Title.ToLower().Contains(title.ToLower());
             return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy("title"), _expressionQuery));
         }
 
@@ -124,6 +88,14 @@ namespace Shop.BLL.Services.Impl
 
             _expressionQuery = obj => obj.Type == (type.ToLower() == "audiobook" ? TypeOfBook.Audiobook : TypeOfBook.EBook);
             return Mapper.Map<IEnumerable<BookDTO>>(_bookRepository.Find(OrderBy("title"), _expressionQuery));
+        }
+
+        private Expression<Func<Book,bool>> QueryToTitleAndAuthor(string query)
+        {
+            return book => (book.Title.ToLower().Contains(query.ToLower())
+               || (book.Author.FirstName.ToLower() + " " + book.Author.LastName.ToLower()).Contains(query.ToLower())
+               || (book.Author.LastName.ToLower() + " " + book.Author.FirstName.ToLower()).Contains(query.ToLower())
+               || query == null);
         }
 
         private Func<IQueryable<Book>, IOrderedQueryable<Book>> OrderBy(string orderBy)

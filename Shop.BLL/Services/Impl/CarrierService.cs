@@ -10,7 +10,7 @@ using AutoMapper;
 
 namespace Shop.BLL.Services.Impl
 {
-    class CarrierService : ICarrierService
+    public class CarrierService : ICarrierService
     {
         private readonly ICarrierRepository _carrierRepository;
 

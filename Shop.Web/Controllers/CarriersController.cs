@@ -17,7 +17,7 @@ namespace Shop.Web.Controllers
 {
     public class CarriersController : ApiController
     {
-        //ShopDbContext context = new ShopDbContext();
+        
         private readonly ICarrierService _carrierService;
 
         public CarriersController(ICarrierService carrierService)
