@@ -62,7 +62,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".app {\n  height: 100vh; }\n\n.container {\n  padding: 0 10px;\n  margin: 20px auto;\n  max-width: 1200px; }\n\nmd-sidenav-container {\n  height: calc(100% - 56px); }\n  @media screen and (min-width: 599px) {\n    md-sidenav-container {\n      height: calc(100% - 64px); } }\n  md-sidenav-container md-sidenav {\n    width: 80%; }\n    @media screen and (min-width: 599px) {\n      md-sidenav-container md-sidenav {\n        width: 40vh; } }\n", ""]);
+exports.push([module.i, ".app {\n  height: 100vh; }\n\n.container {\n  padding: 0 10px;\n  margin: 20px auto;\n  max-width: 1200px; }\n\nmd-sidenav-container {\n  height: calc(100% - 56px); }\n  @media screen and (min-width: 599px) {\n    md-sidenav-container {\n      height: calc(100% - 64px); } }\n  md-sidenav-container md-sidenav {\n    width: 80%; }\n    @media screen and (min-width: 599px) {\n      md-sidenav-container md-sidenav {\n        width: 60vh; } }\n", ""]);
 
 // exports
 
@@ -494,7 +494,7 @@ var BooksComponent = (function () {
             if (!response.length)
                 _this.dialog.open(__WEBPACK_IMPORTED_MODULE_8_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
             else
-                setTimeout(function () { _this.books = response; }, 300);
+                setTimeout(function () { _this.books = response; }, 400);
         });
     };
     BooksComponent.prototype.openDialog = function (book) {
@@ -581,7 +581,7 @@ var AudiobooksComponent = (function (_super) {
             if (!response.length)
                 _this.dialog.open(__WEBPACK_IMPORTED_MODULE_6_app_books_no_results_alert_no_results_alert_component__["a" /* NoResultsAlertComponent */], { role: "alertdialog", width: "300px" });
             else
-                setTimeout(function () { _this.books = response; }, 300);
+                setTimeout(function () { _this.books = response; }, 400);
         });
     };
     return AudiobooksComponent;
@@ -1146,7 +1146,7 @@ var _a, _b, _c;
 /***/ "./src/app/books/preloader/preloader.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div fxLayout=\"column\"  fxLayoutAlign=\"center center\" style=\"padding:20px\"> \n  <md-spinner></md-spinner>\n  <p>Trwa ładowanie...</p>\n</div>"
+module.exports = "<div fxLayout=\"column\"  fxLayoutAlign=\"center center\" style=\"padding:20px\"> \n  <md-spinner></md-spinner>\n  <p>ładowanie...</p>\n</div>"
 
 /***/ }),
 

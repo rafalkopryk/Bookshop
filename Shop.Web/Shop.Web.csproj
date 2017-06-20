@@ -265,9 +265,11 @@
     <Content Include="www\src\app\books\add-to-cart-dialog\add-to-cart-dialog.component.html" />
     <Content Include="www\src\app\books\books.component.html" />
     <Content Include="www\src\app\books\no-results-alert\no-results-alert.component.html" />
+    <Content Include="www\src\app\books\preloader\preloader.component.html" />
     <Content Include="www\src\app\header\header.component.html" />
     <Content Include="www\src\app\header\search-engine\search-engine.component.html" />
     <Content Include="www\src\app\navbar\navbar.component.html" />
+    <Content Include="www\src\app\shared\progress\progress.component.html" />
     <Content Include="www\src\favicon.ico" />
     <Content Include="www\src\index.html" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -308,6 +310,8 @@
     <Content Include="www\src\app\basket\basket.component.scss" />
     <Content Include="www\src\app\header\search-engine\search-engine.component.scss" />
     <Content Include="www\src\app\books\no-results-alert\no-results-alert.component.scss" />
+    <Content Include="www\src\app\books\preloader\preloader.component.scss" />
+    <Content Include="www\src\app\shared\progress\progress.component.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -337,6 +341,7 @@
     <TypeScriptCompile Include="www\src\app\books\ebooks\ebooks.component.ts" />
     <TypeScriptCompile Include="www\src\app\books\no-results-alert\no-results-alert.component.ts" />
     <TypeScriptCompile Include="www\src\app\books\novelties\novelties.component.ts" />
+    <TypeScriptCompile Include="www\src\app\books\preloader\preloader.component.ts" />
     <TypeScriptCompile Include="www\src\app\books\previews\previews.component.ts" />
     <TypeScriptCompile Include="www\src\app\books\super-bargains\super-bargains.component.ts" />
     <TypeScriptCompile Include="www\src\app\header\search-engine\search-engine.component.ts" />
@@ -345,6 +350,8 @@
     <TypeScriptCompile Include="www\src\app\header\header.module.ts" />
     <TypeScriptCompile Include="www\src\app\navbar\navbar.component.ts" />
     <TypeScriptCompile Include="www\src\app\navbar\navbar.module.ts" />
+    <TypeScriptCompile Include="www\src\app\shared\progress\progress.component.ts" />
+    <TypeScriptCompile Include="www\src\app\shared\progress\progress.service.ts" />
     <TypeScriptCompile Include="www\src\app\shared\search.service.ts" />
     <TypeScriptCompile Include="www\src\app\shared\shared.module.ts" />
     <TypeScriptCompile Include="www\src\app\shared\sidenav.service.ts" />
