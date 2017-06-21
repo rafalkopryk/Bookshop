@@ -90,15 +90,15 @@ namespace Shop.Web.Controllers
             return _bookRepository.GetByTitle(title);
         }
 
-        // GET: api/books/publisher?publisher={publisher}
+        // GET: api/publishers/{publisher}/books
         [HttpGet]
-        [Route("api/publisher/{publisher}/books")]
+        [Route("api/publishers/{publisher}/books")]
         public IEnumerable<BookDTO> GetAllByPublisher(string publisher)
         {
             return _bookRepository.GetByPublisher(publisher);
         }
 
-        // GET: api/books/type?type={type}
+        // GET: api/{type}/books
         [HttpGet]
         [Route("api/{type}/books")]
         public IEnumerable<BookDTO> GetAllByType(string type)
