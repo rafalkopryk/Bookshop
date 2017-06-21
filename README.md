@@ -45,9 +45,9 @@ GetAllByType | /api/{type}/books | <b>type</b> - typ książki (E-Book albo Audi
 
 <b>3.2 Opis API dla metod zaimplementowanych w ramach wcześniejszych etapów.</b>
 
-Poniższe metody nie licząc <b>GetCarriers</b> umożliwiają pobranie rekordów księgozbioru zawierających w nazwie lub imieniu i nazwisku autora wyraz podany jako parametr <b>query</b>. Ponadto dają wybór sposobu sortowania poprzez parametr <b>orderBy</b>. Możliwe wartości sortowania podano w punkcie 3.3. Poniżej znajduję się wzorzec ścieżki z parametrami uri dla poniższych metod.  
+Poniższe metody nie licząc <b>GetCarriers</b> umożliwiają pobranie rekordów księgozbioru zawierających w nazwie lub imieniu i nazwisku autora wyraz podany jako parametr <b>query</b>. Ponadto dają wybór sposobu sortowania poprzez parametr <b>orderBy</b>. Możliwe wartości sortowania podano w punkcie 3.3. Poniżej znajduję się wzorzec ścieżki z parametrami uri dla poniższych metod na przykładzie Resta /api/books/all.
 
-    /api/books/?query={wartość}&orderBy={wartość}
+    /api/books/all?query={wartość}&orderBy={wartość}
   
 Parametry sa opcjonalne.
 
