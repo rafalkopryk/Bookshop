@@ -14,7 +14,13 @@ W tym celu z poziomu konsoli należy przejść do lokalizacji <b>Shop.Web/www</b
 
 <b>2.2. Uruchomienie projektu</b>
 
-W celu uruchomienia projektu należy otworzyć plik Bookshop.sln w Visual Studio a następnie uruchomić aplikację. Baza danych powinna zostać utworzona wraz z przykładowymi danymi podczas pierwszego uruchomienia programu. W przypadku nie utworzenia przykładowych danych należy wpisać w konsoli menadżera pakietów (<b>Package Manager Console</b>) polecenie <b>Update-Database</b>. Jako domyślny projekt w  konsoli menadżera pakietów należy ustawić <b>Shop.DAL</b>. W sytuacji uruchomienia programu lecz nie załadowania aplikacji wykonanej w frameworku angular (ciągle widoczny tekst Trwa ładowanie...) patrz punkt 2.5.  
+W celu uruchomienia projektu należy otworzyć plik Bookshop.sln w Visual Studio a następnie uruchomić aplikację. Baza danych powinna zostać utworzona wraz z przykładowymi danymi podczas pierwszego uruchomienia programu.
+
+* W przypadku nie utworzenia przykładowych danych należy wpisać w konsoli menadżera pakietów (<b>Package Manager Console</b>) polecenie <b>Update-Database</b>. Jako domyślny projekt w  konsoli menadżera pakietów należy ustawić <b>Shop.DAL</b>.
+
+* W sytuacji uruchomienia programu lecz nie załadowania aplikacji wykonanej w frameworku angular (ciągle widoczny tekst Trwa ładowanie...) patrz punkt 2.5.  
+
+* W sytuacji występowania błędów z brakiem modułów node dla frameworka Angular pomimo ich wcześniejszego zainstalowania należy przebudować projekt (Rebuild solution).
 
 <b>2.3. Ustawienie połączenia z bazą danych</b> 
 
