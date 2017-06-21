@@ -130,4 +130,4 @@ Autofac IoC Container | Przstrzeń nazw Shop.Web.App_Start (klasa IoCConfig)
 Wzorzec repozytorium | Przestrzeń nazw Shop.DAL.Repositories
 Testy jednostkowe NUnit | Projekt Shop.Web.Tests
 
-## 5. Komentarze odnośnie zadania
+
