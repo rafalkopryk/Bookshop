@@ -128,6 +128,7 @@ Entity Framework | Przestrzeń nazw Shop.DAL.Repositories.Impl (klasa Repository
 Angular | Projekt Shop.Web > katalog www
 Autofac IoC Container | Przstrzeń nazw Shop.Web.App_Start (klasa IoCConfig)
 Wzorzec repozytorium | Przestrzeń nazw Shop.DAL.Repositories
+Wzorzec DTO | Przestrzeń nazw Shop.BLL.DTOs, mapowane przez AutoMappera
 Testy jednostkowe NUnit | Projekt Shop.Web.Tests
 
 
