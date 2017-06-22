@@ -4,6 +4,7 @@ Mini księgarnia internetowa stworzona w technologiach ASP.NET Web Api oraz Angu
 * NodeJS v6.11 
 * Net Framework 4.6.1
 * SQL Server
+* Angular-Cli (w przypadku modyfikowania projektu Angular)
 ## 2. Instrukcja uruchomieniowa
 <b>2.1. Instalacja modułów node dla projektu Angular-Cli</b>
 
@@ -35,6 +36,10 @@ W celu uruchomienia testów jednostkowych należy przejść do Test > Run > All 
 W celu potwierdzenia zmian wprowadzonych w aplikacji tworzonej przy pomocy frameworka Angular należy w lokalizacji <b>Shop.Web/www</b> wpisać polecenie:
 
     ng build
+   
+<b>Uwaga</b>: Dla danego polecenia wymagany jest zainstalowany Angular-Cli
+
+    npm install -g @angular/cli
 
 ## 3. Opis Web API
 
