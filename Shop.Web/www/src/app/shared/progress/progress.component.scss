@@ -1,12 +1,19 @@
-.loader-hidden {
+﻿.loader-hidden {
     visibility: hidden;
     
 }
 .loader-overlay {
-    position: absolute;
-    width:100%;
-    top:0;
-    left: 0;
-    opacity: 1;
-    z-index: 500000;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 50;
+
+  md-progress-bar{
+    height: 3px;
+    box-shadow: 0 0 10px rgba(119,182,255,0.7);
+    -webkit-transition: width 0.4s ease;
+    transition: width 0.4s ease;
+  }
 }

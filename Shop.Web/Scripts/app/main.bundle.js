@@ -62,7 +62,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".app {\n  height: 100vh; }\n\n.container {\n  padding: 0 10px;\n  margin: 20px auto;\n  max-width: 1200px; }\n\nmd-sidenav-container {\n  height: calc(100% - 56px); }\n  @media screen and (min-width: 599px) {\n    md-sidenav-container {\n      height: calc(100% - 64px); } }\n  md-sidenav-container md-sidenav {\n    width: 80%; }\n    @media screen and (min-width: 599px) {\n      md-sidenav-container md-sidenav {\n        width: 60vh; } }\n", ""]);
+exports.push([module.i, ".app {\n  height: 100vh; }\n\n.container {\n  padding: 0 10px;\n  margin: 20px auto;\n  max-width: 1200px; }\n\nmd-sidenav-container {\n  height: calc(100% - 56px); }\n  @media screen and (min-width: 599px) {\n    md-sidenav-container {\n      height: calc(100% - 64px); } }\n  md-sidenav-container md-sidenav {\n    width: 80%; }\n    @media screen and (min-width: 599px) {\n      md-sidenav-container md-sidenav {\n        width: 50vh; } }\n", ""]);
 
 // exports
 
@@ -419,7 +419,7 @@ AddToCartDialogComponent = __decorate([
         template: __webpack_require__("./src/app/books/add-to-cart-dialog/add-to-cart-dialog.component.html"),
         styles: [__webpack_require__("./src/app/books/add-to-cart-dialog/add-to-cart-dialog.component.scss")]
     }),
-    __param(2, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["i" /* Inject */])(__WEBPACK_IMPORTED_MODULE_1__angular_material__["h" /* MD_DIALOG_DATA */])),
+    __param(2, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* Inject */])(__WEBPACK_IMPORTED_MODULE_1__angular_material__["h" /* MD_DIALOG_DATA */])),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["i" /* MdDialogRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["i" /* MdDialogRef */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_books_carriers_service__["a" /* CarriersService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_books_carriers_service__["a" /* CarriersService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5_app_books_book__["a" /* Book */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_books_book__["a" /* Book */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["i" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["i" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6_app_shared_basket_service__["a" /* BasketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_app_shared_basket_service__["a" /* BasketService */]) === "function" && _e || Object])
 ], AddToCartDialogComponent);
 
@@ -1146,7 +1146,7 @@ var _a, _b, _c;
 /***/ "./src/app/books/preloader/preloader.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div fxLayout=\"column\"  fxLayoutAlign=\"center center\" style=\"padding:20px\"> \n  <md-spinner></md-spinner>\n  <p>ładowanie...</p>\n</div>"
+module.exports = "<div fxLayout=\"column\"  fxLayoutAlign=\"center center\" style=\"padding:20px\"> \r\n  <md-spinner></md-spinner>\r\n  <p>ładowanie...</p>\r\n</div>"
 
 /***/ }),
 
@@ -1373,7 +1373,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "md-toolbar {\n  z-index: 10; }\n  md-toolbar h1 {\n    font-size: 20px;\n    margin: 0; }\n  md-toolbar p {\n    font-size: 12px;\n    margin: 0; }\n  md-toolbar .basket p {\n    font-size: 12px;\n    font-weight: 700;\n    margin-right: 10px; }\n  md-toolbar .basket button {\n    border: 1px solid; }\n  md-toolbar .searchContainer {\n    width: 100%; }\n    @media screen and (min-width: 599px) {\n      md-toolbar .searchContainer {\n        width: 500px;\n        margin: 0 15px; } }\n", ""]);
+exports.push([module.i, "md-toolbar {\n  z-index: 10; }\n  md-toolbar h1 {\n    font-size: 20px;\n    font-weight: bold;\n    margin-bottom: -10px; }\n  md-toolbar p {\n    font-size: 12px;\n    margin: 0; }\n  md-toolbar .basket p {\n    font-size: 12px;\n    font-weight: 700;\n    margin-right: 10px; }\n  md-toolbar .basket button {\n    border: 1px solid; }\n  md-toolbar .searchContainer {\n    width: 100%; }\n    @media screen and (min-width: 599px) {\n      md-toolbar .searchContainer {\n        width: 500px;\n        margin: 0 15px; } }\n", ""]);
 
 // exports
 
@@ -1728,7 +1728,7 @@ BasketService = __decorate([
 /***/ "./src/app/shared/progress/progress.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div [class.loader-hidden]=\"!show\">\n    <div class=\"loader-overlay\">\n            <div>\n                <md-progress-bar mode=\"indeterminate\" color=\"warn\"></md-progress-bar>\n            </div>\n    </div>\n</div>"
+module.exports = "<div [class.loader-hidden]=\"!show\">\r\n    <div class=\"loader-overlay\">\r\n            <div>\r\n                <md-progress-bar mode=\"indeterminate\" color=\"warn\"></md-progress-bar>\r\n            </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -1740,7 +1740,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".loader-hidden {\n  visibility: hidden; }\n\n.loader-overlay {\n  position: absolute;\n  width: 100%;\n  top: 0;\n  left: 0;\n  opacity: 1;\n  z-index: 500000; }\n", ""]);
+exports.push([module.i, ".loader-hidden {\n  visibility: hidden; }\n\n.loader-overlay {\n  position: absolute;\n  width: 100%;\n  top: 0;\n  left: 0;\n  opacity: 1;\n  z-index: 50; }\n  .loader-overlay md-progress-bar {\n    height: 3px;\n    box-shadow: 0 0 10px rgba(119, 182, 255, 0.7);\n    transition: width 0.4s ease; }\n", ""]);
 
 // exports
 
