@@ -16,11 +16,11 @@ namespace Shop.Web.Controllers
 
     public class BooksController : ApiController
     {
-        private readonly IBookService _bookRepository;
+        private readonly IBookService _bookService;
 
-        public BooksController(IBookService bookRepository)
+        public BooksController(IBookService bookService)
         {
-            _bookRepository = bookRepository;
+            _bookService = bookService;
         }
 
         // GET: api/books/all
@@ -28,7 +28,7 @@ namespace Shop.Web.Controllers
         [Route("api/books/all")]
         public IEnumerable<BookDTO> GetAllBooks([FromUri] string query = null, [FromUri] string orderBy = null)
         {
-            return _bookRepository.GetAllByCriteria(query, orderBy);
+            return _bookService.GetAllByCriteria(query, orderBy);
         }
 
         // GET: api/books/audiobooks
@@ -36,7 +36,7 @@ namespace Shop.Web.Controllers
         [Route("api/books/audiobooks")]
         public IEnumerable<BookDTO> GetAudiobooks([FromUri] string query = null, [FromUri] string orderBy = null)
         {
-            return _bookRepository.GetAudiobooksByCriteria(query, orderBy);
+            return _bookService.GetAudiobooksByCriteria(query, orderBy);
         }
 
         // GET: api/books/ebooks
@@ -44,7 +44,7 @@ namespace Shop.Web.Controllers
         [Route("api/books/ebooks")]
         public IEnumerable<BookDTO> GetEbooks([FromUri] string query = null, [FromUri] string orderBy = null)
         {
-            return _bookRepository.GetEbooksByCriteria(query, orderBy);
+            return _bookService.GetEbooksByCriteria(query, orderBy);
         }
 
         // GET: api/books/novelties
@@ -52,7 +52,7 @@ namespace Shop.Web.Controllers
         [Route("api/books/novelties")]
         public IEnumerable<BookDTO> GetNovelties([FromUri] string query = null, [FromUri] string orderBy = null)
         {
-            return _bookRepository.GetNoveltiesByCriteria(query, orderBy);
+            return _bookService.GetNoveltiesByCriteria(query, orderBy);
         }
 
         // GET: api/books/previews
@@ -60,7 +60,7 @@ namespace Shop.Web.Controllers
         [Route("api/books/previews")]
         public IEnumerable<BookDTO> GetPreviews([FromUri] string query = null, [FromUri] string orderBy = null)
         {
-            return _bookRepository.GetPreviewsByCriteria(query, orderBy);
+            return _bookService.GetPreviewsByCriteria(query, orderBy);
         }
 
         // GET: api/books/super-bargains
@@ -68,7 +68,7 @@ namespace Shop.Web.Controllers
         [Route("api/books/super-bargains")]
         public IEnumerable<BookDTO> GetSuperBargains([FromUri] string query = null, [FromUri] string orderBy = null)
         {
-            return _bookRepository.GetSuperBargainsByCriteria(query, orderBy);
+            return _bookService.GetSuperBargainsByCriteria(query, orderBy);
         }
 
 
@@ -79,7 +79,7 @@ namespace Shop.Web.Controllers
         [Route("api/books")]
         public IEnumerable<BookDTO> GetAll()
         {
-            return _bookRepository.GetAll();
+            return _bookService.GetAll();
         }
 
         // GET: api/books/title?title={title}
@@ -87,7 +87,7 @@ namespace Shop.Web.Controllers
         [Route("api/books/title")]
         public IEnumerable<BookDTO> GetAllByTitle([FromUri] string title)
         {
-            return _bookRepository.GetByTitle(title);
+            return _bookService.GetByTitle(title);
         }
 
         // GET: api/publishers/{publisher}/books
@@ -95,7 +95,7 @@ namespace Shop.Web.Controllers
         [Route("api/publishers/{publisher}/books")]
         public IEnumerable<BookDTO> GetAllByPublisher(string publisher)
         {
-            return _bookRepository.GetByPublisher(publisher);
+            return _bookService.GetByPublisher(publisher);
         }
 
         // GET: api/{type}/books
@@ -103,7 +103,7 @@ namespace Shop.Web.Controllers
         [Route("api/{type}/books")]
         public IEnumerable<BookDTO> GetAllByType(string type)
         {
-            return _bookRepository.GetByType(type);
+            return _bookService.GetByType(type);
         }
     }
 }
